@@ -74,5 +74,3 @@ def upload_file():
 
   #  dfa.to_sql('taxData', con=engine, if_exists='replace')
    # engine.execute("SELECT * FROM taxData").fetchall()
-
-   

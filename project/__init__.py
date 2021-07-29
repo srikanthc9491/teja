@@ -1,5 +1,6 @@
 ##     Import Libraries & Modules  ##
 from flask import Flask, app
+import os
 from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy
 
@@ -38,3 +39,6 @@ def create_app():
 
 
     return app
+
+port = int(os.environ.get('PORT', 5000))
+app.run(host='0.0.0.0', port=port)
