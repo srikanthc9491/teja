@@ -1,2 +1,3 @@
-from project import app
-app.run()
+from project import create_app
+
+create_app.run()
