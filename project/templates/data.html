@@ -1,0 +1,23 @@
+{% extends 'welcomepage.html' %}
+
+
+{% block content %}
+
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+{% for table in tables %}
+          
+            {{ table|safe }}
+{% endfor %}
+</body>
+</html>
+
+
+{% endblock %}
