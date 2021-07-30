@@ -6,11 +6,10 @@ import os.path
 
 main = Blueprint('main', __name__)
 
-PEOPLE_FOLDER = os.path.join('static')
 
-@main.route('/')
+
+@main.route('/', methods=['GET', 'POST'])
 def index():
-    full_filename = os.path.join(PEOPLE_FOLDER, 'pic.jpg')
     return render_template("welcome.html")
 
 
@@ -74,3 +73,5 @@ def upload_file():
 
   #  dfa.to_sql('taxData', con=engine, if_exists='replace')
    # engine.execute("SELECT * FROM taxData").fetchall()
+
+   
