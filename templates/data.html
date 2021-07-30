@@ -14,7 +14,13 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
- 
+  
+          
+{% for table in tables %}
+          
+            {{ table|safe }}
+{% endfor %}
+ <br>
 <div class="container">
   <h2>This is Your GSTR-1 Section 7 data.</h2>
   <div class="card">
@@ -44,11 +50,7 @@
     <br>
     <br>
 
-        
-{% for table in tables %}
-          
-            {{ table|safe }}
-{% endfor %}
+
 </body>
 </html>
 
