@@ -66,7 +66,7 @@ def upload_file():
     dfa= dfa.dropna(0)
     print(dfb)
 
-    return render_template("data.html", tables=[dfa.to_html(classes='data', header=True), dfb.to_html(classes='data', header=True)], titles = ['na', 'This is Your GSTR-1 Section 7 data', 'Your Refund Data'])
+    return render_template("data.html", tables=[dfa.to_html(classes='data', header=True), Refund.to_html(classes='data', header=True)], titles = ['na', 'This is Your GSTR-1 Section 7 data', 'Your Refund Data'])
 
 
 
