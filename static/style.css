@@ -1,4 +1,4 @@
-body            { font-family: "Lucida Sans Unicode", "Lucida Grande", "sans-serif"; background: linear-gradient(45deg, #49a09d, #5f2c82);}
+body            { font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;}
 a, h1, h2       { color: #377ba8; }
 h1, h2          { margin: 0; }
 h1              { border-bottom: 2px solid #eee; }
@@ -12,13 +12,10 @@ table.dataframe, .dataframe th, .dataframe td {
   padding: 10px;
   margin-bottom: 40px;
   font-size: 0.9em;
-
-	background-color: rgba(255,255,255,0.2);
-	color: #fff;
 }
 
 .dfa th {
-    background-color: #55608f;
+    background-color: #add8e6;
     color: white;
 }
 
@@ -27,13 +24,9 @@ table.dataframe, .dataframe th, .dataframe td {
     color: white;
 }
 
-tr:nth-child(odd)		{ background-color:#eee; }
+tr:nth-child(odd)		{ background-color:linear-gradient(45deg, #49a09d, #5f2c82); }
 tr:nth-child(even)	{ background-color:#fff; }
 
-tr:hover            { background-color: rgba(255,255,255,0.3);}
-
-
-
-		
+tr:hover            { background-color: #ffff99;}
 
 #responsive-image {  width: 100%;  height: auto; } 
