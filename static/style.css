@@ -12,13 +12,11 @@ body {
 
 .container {
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	
 }
 
 table {
-	width: 800px;
+	width: auto;
 	border-collapse: collapse;
 	overflow: hidden;
 	box-shadow: 0 0 20px rgba(0,0,0,0.1);
@@ -32,7 +30,7 @@ td {
 }
 
 th {
-	text-align: left;
+	text-align: centre;
 }
 
 thead {
