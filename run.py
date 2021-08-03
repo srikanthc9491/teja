@@ -12,7 +12,7 @@ def create_app():
     app = Flask(__name__)
 
     app.config['SECRET_KEY'] = 'startup@09PM'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://mukizbizrmqrsm:b2be1e570f5e7b23e724df2ef4027bc60668b348172091616df3b4b37e742d65@ec2-3-213-146-52.compute-1.amazonaws.com:5432/d3kadk0ovqgq0j'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://mukizbizrmqrsm:b2be1e570f5e7b23e724df2ef4027bc60668b348172091616df3b4b37e742d65@ec2-3-213-146-52.compute-1.amazonaws.com:5432/d3kadk0ovqgq0j'
 
 # init SQLAlchemy so we can use it later in our models
     
