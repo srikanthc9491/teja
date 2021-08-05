@@ -59,6 +59,7 @@ def upload_file():
     df = df.astype({"Transaction Type":'category'})
     df1= df[(df['Transaction Type'] == 'MFNShipment')]
     Refund= df[(df['Transaction Type'] == 'Refund')]
+    Cancel= df[(df['Transaction Type'] == 'Cancel')]
     dfb= Refund.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
     dfb= dfb.dropna(0)
   
@@ -66,7 +67,7 @@ def upload_file():
     dfa= dfa.dropna(0)
     print(dfb)
 
-    return render_template("data.html", tables=[dfa.to_html(classes='data', header=True), Refund.to_html(classes='data', header=True)], titles = ['na', 'This is Your GSTR-1 Section 7 data', 'Your Refund Data'])
+    return render_template("data.html", tables=[dfa.to_html(classes='data', header=True), Refund.to_html(classes='data', header=True), Cancel.to_html(classes='data', header=True) ], titles = ['na', 'This is Your GSTR-1 Section 7 data', 'Your Refund Data'])
 
 
 
