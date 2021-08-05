@@ -10,11 +10,4 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(1000))
 
 
-    db.create_all()
-    db.session.commit()
-
-
-
-
-
 
