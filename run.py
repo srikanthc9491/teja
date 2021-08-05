@@ -17,6 +17,14 @@ def create_app():
 # init SQLAlchemy so we can use it later in our models
     
     db.init_app(app)
+from models import User
+
+    db.create_all()
+    db.session.commit()
+
+
+    users = User.query.all()
+    print users
     
     # blueprint for auth routes in our app
     from project.auth import auth as auth_blueprint
