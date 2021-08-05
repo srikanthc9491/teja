@@ -20,11 +20,7 @@ def create_app():
 from models import User
 
     db.create_all()
-    db.session.commit()
-
-
-    users = User.query.all()
-    print users
+    users= User.query.all()
     
     # blueprint for auth routes in our app
     from project.auth import auth as auth_blueprint
