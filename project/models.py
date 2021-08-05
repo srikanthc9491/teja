@@ -10,16 +10,9 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(1000))
 
 
-db.create_all()
-db.session.commit()
+    db.create_all()
+    db.session.commit()
 
-admin = User('admin', 'admin@example.com')
-guest = User('guest', 'guest@example.com')
-db.session.add(admin)
-db.session.add(guest)
-db.session.commit()
-user = User.query.all()
-print user
 
 
 
