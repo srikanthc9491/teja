@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 import pandas as pd
 import os.path
 import matplotlib.pyplot as plt
+import json
 
 main = Blueprint('main', __name__)
 
