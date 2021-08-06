@@ -29,6 +29,46 @@
 <a class="nav-link" href="data">gstdata</a>
 </h2>
   
+<head>
+    <script>
+      // Script 1 — where the data gets loaded
+
+tdata = JSON.parse({{pie|tojson|safe}});
+  pie = tdata.data;
+  temptitle = tdata.title;
+  chartType = "PieChart";
+  containerId = "chart1";
+  options = {"title":temptitle};
+
+    </script>
+    <! — Script 2 — Load the AJAX API →
+    <script src=”https://www.gstatic.com/charts/loader.js">   
+    </script>
+    <script>
+      // Script 3 — Where we create and display a chart
+// Load the Visualization API and the corechart package
+  google.charts.load(‘current’, {‘packages’:[‘corechart’]});
+  // Set a callback for when the API is loaded
+  google.charts.setOnLoadCallback(drawChart);
+  
+  // This is the callback function which actually draws the chart
+  function drawChart(){
+    google.visualization.drawChart({
+      "containerId": "chart1";
+      "dataTable": data, 
+      "chartType": “PieChart”; 
+      "options": options
+    });
+  }
+    </script>
+  </head>
+  <body>
+    <! — the div where a chart will be displayed →
+    <div style=”width:600px; height:300px” id=”chart1"></div>
+  </body>
+
+
+
 
 </body>
 </html>
