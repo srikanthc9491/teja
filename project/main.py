@@ -71,10 +71,19 @@ def upload_file():
     states= df1[['Ship To State', 'Total Tax Amount']] 
     States= states.groupby(['Ship To State']) 
     totalTax= df1.agg({'Total Tax Amount': ['sum']})
-    dfc= df1.groupby(['Ship To State']).agg({'Total Tax Amount'})
-
+    dfc= df1[['Ship To State', 'Total Tax Amount']]
+    dfc= dfc.groupby(['Ship To State']).agg({'Total Tax Amount'})
+     
     
-    return render_template("predata.html", tables=[states.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], totalTax=totalTax, pie= dfc) 
+    
+    
+    title = "state wise tax" 
+    d = dfc.values.tolist()
+    c = dfc.columns.tolist()
+    d.insert(0,c)
+    pie = json.dumps({'title':title,'data':d})
+    
+    return render_template("predata.html", tables=[states.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], totalTax=totalTax, pie=pie) 
 
     
 
