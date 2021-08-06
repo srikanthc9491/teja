@@ -13,21 +13,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
-<body>
-  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
-<div class=page>
-  <h2> {% print totalTax %} </h2>
-{% for table in tables %}
-    <h2>{{titles[loop.index]}}</h2>
-    {{ table|safe }}
-  {% endfor %}
-  </div>
- <br>
-<div class="container">
-  <h2>get full details<br>
-<a class="nav-link" href="data">gstdata</a>
-</h2>
-  
+
+
+
 <head>
 	<meta charset="UTF-8">
 	<title>Show Data on Google Pie Chart using Python Flask</title>
@@ -63,6 +51,28 @@
 		<div id="piechart_3d" style="width: 900px; height: 500px;"></div>
 	</div>
 </body>
+
+
+
+
+
+
+<body>
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+  <h2> {% print totalTax %} </h2>
+{% for table in tables %}
+    <h2>{{titles[loop.index]}}</h2>
+    {{ table|safe }}
+  {% endfor %}
+  </div>
+ <br>
+<div class="container">
+  <h2>get full details<br>
+<a class="nav-link" href="data">gstdata</a>
+</h2>
+  
+
 
 
 
