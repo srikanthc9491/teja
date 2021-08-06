@@ -1,0 +1,34 @@
+{% extends 'welcomepage.html' %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SpoonfeeTAX</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+  {% print("Total tax to be filed :", totalTax %}
+{% for table in tables %}
+    <h2>{{titles[loop.index]}}</h2>
+    {{ table|safe }}
+  {% endfor %}
+  </div>
+ <br>
+<div class="container">
+  <h2>get full details</h2>
+  
+
+</body>
+</html>
+
+
+{% endblock %}
