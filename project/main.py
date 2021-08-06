@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request
 from flask_login import login_required, current_user
 import pandas as pd
 import os.path
-
+import matplotlib.pyplot as plt
 
 main = Blueprint('main', __name__)
 
@@ -70,9 +70,18 @@ def upload_file():
     print(dfb)
     states= df1[['Ship To State']] 
     States= states.groupby(['Ship To State']) 
-    totalTax= df1.agg({'Total Tax Amount': ['sum']}) 
+    totalTax= df1.agg({'Total Tax Amount': ['sum']})
+    dfa= df1.groupby(['Ship To State']).agg({'Total Tax Amount'})
+    dfc['GST TO BE PAID'] = dfa['Total Tax Amount'] 
+
+plt.figure(figsize=(16,8))
+# plot chart
+ax1 = plt.subplot(121, aspect='equal')
+pie=dfc.plot(kind='pie', y = 'Total Tax Amount', ax=ax1, autopct='%1.1f%%', 
+ startangle=90, shadow=False, labels=df['Ship To State'], legend = False, fontsize=14)
+ 
     
-    return render_template("predata.html", tables=[states.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], totalTax=totalTax)
+    return render_template("predata.html", tables=[states.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], totalTax=totalTax, pie)
 
 
     
