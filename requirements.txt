@@ -31,3 +31,4 @@ gunicorn==19.7.1
 psycopg2
 Flask-GoogleCharts
 Matplotlib
+jsonlib
