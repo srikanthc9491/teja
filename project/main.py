@@ -4,7 +4,7 @@ import pandas as pd
 import os.path
 import matplotlib.pyplot as plt
 import json
-import Flask-GoogleCharts 
+from Flask-GoogleCharts import *
 
 main = Blueprint('main', __name__)
 
