@@ -70,8 +70,9 @@ def upload_file():
     print(dfb)
     states= df1[['Ship To State']] 
     States= states.groupby(['Ship To State']) 
+    totalTax= df1.agg({'Total Tax Amount': ['sum']}) 
     
-    return render_template("predata.html", tables=[states.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'])
+    return render_template("predata.html", tables=[states.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], totalTax=totalTax)
 
 
     
