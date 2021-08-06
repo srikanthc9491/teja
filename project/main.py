@@ -78,7 +78,7 @@ def upload_file():
     dfc= dfc[(dfc['Transaction Type'] == 'MFNShipment')] 
     dfc= dfc[['Ship To State', 'Total Tax Amount']]
     for cols in dfc.columns.tolist()[1:]:
-    dfc = dfc.ix[dfc[cols]>0]
+       dfc = dfc.ix[dfc[cols]>0]
 
 
     title = "state wise tax" 
