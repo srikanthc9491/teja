@@ -16,7 +16,7 @@
 <body>
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <div class=page>
-  {% print("Total tax to be filed :", totalTax %}
+  {% print("Total tax to be filed :", totalTax) %}
 {% for table in tables %}
     <h2>{{titles[loop.index]}}</h2>
     {{ table|safe }}
