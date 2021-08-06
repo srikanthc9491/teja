@@ -68,9 +68,13 @@ def upload_file():
     dfa= df1.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
     dfa= dfa.dropna(0)
     print(dfb)
+    states= dfa[['Ship To State']] 
+    States= states.groupby(['Ship To State']) 
+    
+    return render_template("predata.html", tables=[states.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'])
 
-    return render_template("data.html", tables=[dfa.to_html(classes='data', header=True), Refund.to_html(classes='data', header=True), Cancel.to_html(classes='data', header=True) ], titles = ['na', 'This is Your GSTR-1 Section 7 data', 'Your Refund Data', 'Your Cancellations'])
 
+    
 
 
 
