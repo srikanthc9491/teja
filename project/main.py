@@ -64,18 +64,18 @@ def upload_file():
     Cancel = Cancel.astype({"Transaction Type":'category'})
     Cancel= Cancel[(Cancel['Transaction Type'] == 'Cancel')]
     dfb= Refund.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
-    dfb= dfb.dropna(0)
+    dfb= dfb.dropna
   
     dfa= df1.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
-    dfa= dfa.dropna(0)
+    dfa= dfa.dropna
     print(dfb)
     states= df1[['Ship To State', 'Total Tax Amount']] 
     States= states.groupby(['Ship To State']) 
     totalTax= df1.agg({'Total Tax Amount': ['sum']})
     
-    dfc= df1[['Ship To State', 'Total Tax Amount', 'Transaction Type']]
-    dfc= dfc[(dfc['Transaction Type'] == 'MFNShipment')]
-    dfc.drop('Transaction Type',inplace=True, axis =1) 
+    dfc= data[['Ship To State', 'Total Tax Amount', 'Transaction Type']]
+    dfc = dfc.astype({"Transaction Type":'category'})
+    dfc= dfc[(dfc['Transaction Type'] == 'MFNShipment')] 
     
     
     title = "state wise tax" 
