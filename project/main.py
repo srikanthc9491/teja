@@ -77,11 +77,11 @@ def upload_file():
 plt.figure(figsize=(16,8))
 # plot chart
 ax1 = plt.subplot(121, aspect='equal')
-pie=dfc.plot(kind='pie', y = 'Total Tax Amount', ax=ax1, autopct='%1.1f%%', 
- startangle=90, shadow=False, labels=df['Ship To State'], legend = False, fontsize=14)
- 
+
     
-    return render_template("predata.html", tables=[states.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], totalTax=totalTax, pie=pie)
+    return render_template("predata.html", tables=[states.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], totalTax=totalTax, pie=dfc.plot(kind='pie', y = 'Total Tax Amount', ax=ax1, autopct='%1.1f%%', 
+ startangle=90, shadow=False, labels=df['Ship To State'], legend = False, fontsize=14)
+ )
 
 
     
