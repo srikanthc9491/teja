@@ -37,7 +37,7 @@
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-			{% for key, value in data %}
+			{% for key, value in data.items() %}
 				{% if value is string %}
 					['{{ key }}', '{{ value }}'],
 				{% else %}
