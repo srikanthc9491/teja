@@ -72,7 +72,7 @@ def upload_file():
     States= states.groupby(['Ship To State']) 
     totalTax= df1.agg({'Total Tax Amount': ['sum']})
     dfc= df1.groupby(['Ship To State']).agg({'Total Tax Amount'})
-    dfc['GST TO BE PAID'] = dfa['Total Tax Amount'] 
+    dfc['GST TO BE PAID'] = df1['Total Tax Amount'] 
 
 plt.figure(figsize=(16,8))
 # plot chart
