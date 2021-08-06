@@ -72,9 +72,10 @@ def upload_file():
     states= df1[['Ship To State', 'Total Tax Amount']] 
     States= states.groupby(['Ship To State']) 
     totalTax= df1.agg({'Total Tax Amount': ['sum']})
-    dfc= df1[['Ship To State', 'Total Tax Amount']]
     
-    
+    dfc= df1[['Ship To State', 'Total Tax Amount', 'Transaction Type']]
+    dfc= dfc[(dfc['Transaction Type'] == 'MFNShipment')]
+    dfc.drop('Transaction Type',inplace=True, axis =1) 
     
     
     title = "state wise tax" 
