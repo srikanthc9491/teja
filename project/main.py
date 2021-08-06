@@ -71,7 +71,7 @@ def upload_file():
     states= df1[['Ship To State']] 
     States= states.groupby(['Ship To State']) 
     totalTax= df1.agg({'Total Tax Amount': ['sum']})
-    dfa= df1.groupby(['Ship To State']).agg({'Total Tax Amount'})
+    dfc= df1.groupby(['Ship To State']).agg({'Total Tax Amount'})
     dfc['GST TO BE PAID'] = dfa['Total Tax Amount'] 
 
 plt.figure(figsize=(16,8))
