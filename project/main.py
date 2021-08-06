@@ -81,7 +81,7 @@ def upload_file():
     d = dfc.values.tolist()
     c = dfc.columns.tolist()
     d.insert(0,c)
-    data = json.dumps({'data':d})
+    data = json.dumps({d})
     
     return render_template("predata.html", tables=[states.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], totalTax=totalTax, data=data) 
 
