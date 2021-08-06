@@ -53,7 +53,7 @@ tdata = JSON.parse({{pie|tojson|safe}});
   // This is the callback function which actually draws the chart
   function drawChart(){
     google.visualization.drawChart({
-      "containerId": "chart1";
+      "containerId": containerId, 
       "dataTable": data, 
       "chartType": “PieChart”; 
       "options": options
