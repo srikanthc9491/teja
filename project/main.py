@@ -70,7 +70,7 @@ def upload_file():
     dfa= dfa.dropna
     print(dfb)
     states= df1[['Ship To State']] 
-    States= states.groupby(['Ship To State']) 
+    states= states.groupby(['Ship To State']) 
     totalTax= df1.agg({'Total Tax Amount': ['sum']})
     
     dfc= data[['Ship To State', 'Total Tax Amount', 'Transaction Type']]
