@@ -11,6 +11,11 @@ main = Blueprint('main', __name__)
 
 razorpay_client = razorpay.Client(auth=("rzp_live_adPXY9XKnVnF3f", "ZaMBpgFl0HhrMzzYNHthgICF"))
 
+@main.route('/pay')
+def app_create():
+    return render_template('app.html')
+
+
 
 @main.route('/charge', methods=['POST'])
 def app_charge():
