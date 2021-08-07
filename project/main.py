@@ -72,11 +72,8 @@ def upload_file():
     states= pd.DataFrame(df1['Ship To State'].unique()) 
     totalTax= df1.agg({'Total Tax Amount': ['sum']})
     
-    dfc= data[['Ship To State', 'Total Tax Amount', 'Transaction Type']]
-    dfc = dfc.astype({"Transaction Type":'category'})
-    dfc= dfc[(dfc['Transaction Type'] == 'MFNShipment')] 
-    dfc= dfc[['Ship To State', 'Total Tax Amount']]
-    dfc = dfc[(dfc['Total Tax Amount']>=0)]  
+    dfc= pd.DataFrame(df1.groupby(['Ship To State']).agg({'Total Tax Amount'})
+    dfc= pd. DataFrame(dfc['Ship To State', 'Total Tax Amount']) 
     data= dfc.to_dict()
     
     return render_template("predata.html", tables=[states.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], totalTax=totalTax, data=data) 
