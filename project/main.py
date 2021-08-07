@@ -12,7 +12,7 @@ main = Blueprint('main', __name__)
 razorpay_client = razorpay.Client(auth=("rzp_live_adPXY9XKnVnF3f", "ZaMBpgFl0HhrMzzYNHthgICF"))
 
 
-@app.route('/charge', methods=['POST'])
+@main.route('/charge', methods=['POST'])
 def app_charge():
     amount = 100
     payment_id = request.form['razorpay_payment_id']
