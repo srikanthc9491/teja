@@ -25,9 +25,7 @@
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-			{% for index, data in data.items() %}
-				['{{ index }}', {{ data }}],
-			{% endfor %}
+			{% data %}
         ]);
 
         var options = {
