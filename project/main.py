@@ -70,7 +70,8 @@ def upload_file():
     dfa= dfa.dropna
     print(dfb)
     states= df1[['Ship To State']]
-    states.apply(lambda col: col.drop_duplicates().reset_index(drop=True))
+    states= states.groupby(['Ship To State'])
+    states.reset_index(drop=True, inplace=True) 
     states= pd.DataFrame(states) 
     totalTax= df1.agg({'Total Tax Amount': ['sum']})
     
