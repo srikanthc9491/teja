@@ -70,7 +70,7 @@ def upload_file():
     dfa= dfa.dropna
     print(dfb)
     states= df1[['Ship To State']] 
-    states= states.unique() 
+    states['Ship To State']= states['Ship To State'].unique() 
     states= pd.DataFrame(states) 
     totalTax= df1.agg({'Total Tax Amount': ['sum']})
     
