@@ -38,7 +38,7 @@ def pay(id):
     return render_template('pay.html', payment = payment)
 
 @main.root('/data', methods= ['GET', 'POST'])
-    def data():
+def data():
    
     return render_template("data.html")
 
