@@ -13,9 +13,26 @@ razorpay_client = razorpay.Client(auth=("rzp_live_adPXY9XKnVnF3f", "ZaMBpgFl0Hhr
 
 
 
-@main.route('/charge', methods=['POST'])
+@main.route('/predata', methods=['GET'], ['POST'])
 def app_charge():
+    if request.method == "POST":
+        email = request.form.get('email')
+        name = request.form.get('name')
+        phone_number = request.form.get('phone_number')
+        user = User(email=email, name=name, phone_number=phone_number)
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for('pay', id=user.id))
+    
+    
+@main.root('/pay'/<id>, methods= ['GET'], ['POST'])
+def pay(id):
+    user=User.query.filter_by(id=id).first()
+    client= razorpay.Client(auth=("rzp_live_adPXY9XKnVnF3f", "ZaMBpgFl0HhrMzzYNHthgICF"))
     amount = 10000
+    payment= client.order.create({'amount' : int(amount), 'currency' : 'INR', 'payment_capture' : '1'})
+    return render_template('pay.html', payment = payment)
+    
     payment_id = request.form['razorpay_payment_id']
     razorpay_client.payment.capture(payment_id, amount)
     return json.dumps(razorpay_client.payment.fetch(payment_id))
