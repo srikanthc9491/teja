@@ -71,7 +71,7 @@ def upload_file():
     print(dfb)
     states= df1[['Ship To State']] 
     states['Ship To State']= states['Ship To State'].unique() 
-    states.set_index(inplace=True)
+    states.reset_index(inplace=True)
     states= pd.DataFrame(states) 
     totalTax= df1.agg({'Total Tax Amount': ['sum']})
     
