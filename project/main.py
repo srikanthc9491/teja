@@ -24,7 +24,7 @@ def app_charge():
         return redirect(url_for('pay', id=user.id))
     
     
-@main.route('/pay'/<id>, methods= ['GET', 'POST'])
+@main.route('/pay/<id>', methods= ['GET', 'POST'])
 def pay(id):
     user=User.query.filter_by(id=id).first()
     client= razorpay.Client(auth=("rzp_live_adPXY9XKnVnF3f", "ZaMBpgFl0HhrMzzYNHthgICF"))
