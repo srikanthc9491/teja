@@ -19,10 +19,11 @@ def app_create():
 
 @main.route('/charge', methods=['POST'])
 def app_charge():
-    amount = 100
+    amount = 10000
     payment_id = request.form['razorpay_payment_id']
     razorpay_client.payment.capture(payment_id, amount)
     return json.dumps(razorpay_client.payment.fetch(payment_id))
+    return render_template("data.html")
 
 
 @main.route('/', methods=['GET', 'POST'])
