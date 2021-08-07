@@ -17,7 +17,7 @@ class Users(db.model):
     name=db.Column(db.string(50), nullable= False)
     phone_number=db.Column(db.Integer(120), nullable= False)
 
-@main.route('/predata', methods=['GET'], ['POST'])
+@main.route('/predata', methods= ['POST'])
 def app_charge():
     if request.method == "POST":
         email = request.form.get('email')
