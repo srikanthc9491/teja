@@ -1,0 +1,27 @@
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+</head>
+<body>
+    <form action="charge" method="POST">
+      
+       <script
+            src="https://checkout.razorpay.com/v1/checkout.js"
+            data-key="rzp_live_adPXY9XKnVnF3f"
+            data-amount="{{payment['amount']}}"
+            data-currency="INR"
+            data-order_id="{{payment['order_id']}}"
+            data-name="Spoon feed TAX"
+            data-description="Spoon Feeding Tax Filings"
+            data-image="pic3.jpg"
+            data-netbanking="true"
+            data-description="Test transaction"
+            
+            data-notes.shopping_order_id="21">
+        </script>
+        <input type="hidden" name="hidden">
+
+     
+    </form>
+</body>
+</html>
