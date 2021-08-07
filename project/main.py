@@ -18,7 +18,7 @@ def app_charge():
         email = request.form.get('email')
         name = request.form.get('name')
         phone_number = request.form.get('phone_number')
-        return redirect(url_for('pay', email=email, name=name, phone_number=phone_number))
+        return redirect(url_for('main.pay', email=email, name=name, phone_number=phone_number))
     
     
 @main.route('/pay/<id>', methods= ['GET', 'POST'])
