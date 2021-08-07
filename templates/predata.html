@@ -18,24 +18,20 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Show Data on Google Pie Chart using Python Flask</title>
+	<title>Tax Summary</title>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-			{% for key, value in data.items() %}
-				{% if value is string %}
-					['{{ key }}', '{{ value }}'],
-				{% else %}
-					['{{ key }}', {{ value }}],
-				{% endif %}
+			{% for index, data in data.items() %}
+				['{{ index }}', {{ data }}],
 			{% endfor %}
         ]);
 
         var options = {
-          title: 'My Daily Activities',
+          title: 'State Wise Tax',
           is3D: true,
         };
 
