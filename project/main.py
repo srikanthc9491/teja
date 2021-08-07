@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, jsonify
+afrom flask import Blueprint, render_template, request, jsonify
 from flask_login import login_required, current_user
 import pandas as pd
 import os.path
@@ -17,7 +17,7 @@ class Users(db.model):
     name=db.Column(db.string(50), nullable= False)
     phone_number=db.Column(db.Integer(120), nullable= False)
 
-@main.route('/Home', methods=['GET'], ['POST'])
+@main.route('/predata', methods=['GET'], ['POST'])
 def app_charge():
     if request.method == "POST":
         email = request.form.get('email')
