@@ -10,9 +10,9 @@ main = Blueprint('main', __name__)
 
 
 razorpay_client = razorpay.Client(auth=("rzp_live_adPXY9XKnVnF3f", "ZaMBpgFl0HhrMzzYNHthgICF"))
-from project.models import Users
+from project.models import User
 
-class Users(db.model):
+class User(db.model):
     id=db.Column(db.Integer, primary_key= True)
     email=db.Column(db.string(120), nullable= False)
     name=db.Column(db.string(50), nullable= False)
