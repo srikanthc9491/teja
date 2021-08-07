@@ -32,10 +32,10 @@ def pay(id):
     amount = 10000
     payment= client.order.create({'amount' : int(amount), 'currency' : 'INR', 'payment_capture' : '1'})
     return render_template('pay.html', payment = payment)
-    
-    payment_id = request.form['razorpay_payment_id']
-    razorpay_client.payment.capture(payment_id, amount)
-    return json.dumps(razorpay_client.payment.fetch(payment_id))
+
+@main.root('/data, methods= ['GET'], ['POST'])
+    def data():
+   
     return render_template("data.html")
 
 
