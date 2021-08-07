@@ -71,20 +71,14 @@
   <h2>get your gst data. Complete payment. </h2><br>
 
 <body>
-    <form action="charge" method="POST">
-        <script
-            src="https://checkout.razorpay.com/v1/checkout.js"
-            data-key="rzp_test_WyK93y9mvps7SN"
-            data-amount="10000"
-            data-name="Spoon feed TAX"
-            data-description="Spoon Feeding Tax Filings"
-            data-image="pic.jpg"
-            data-netbanking="true"
-            data-description="Tron Legacy"
-            data-prefill.email="email@example.com"
-            data-notes.shopping_order_id="21">
-        </script>
-        <input type="hidden" name="shopping_order_id" value="21">
+    <form action="predata" method="POST">
+	    
+	    <input class= "form-control mt-2" placeholder="email" type="email" required>
+	    <input class= "form-control mt-2" placeholder="name" type="name" required>
+	    <input class= "form-control mt-2" placeholder="phone_number" type="number" required>
+	    
+	    <button class="btn btn-success mt-3 btn-block">Pay for my Coffee</button>
+       
     </form>
 </body>
 
