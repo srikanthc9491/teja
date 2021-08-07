@@ -10,7 +10,13 @@ main = Blueprint('main', __name__)
 
 
 razorpay_client = razorpay.Client(auth=("rzp_live_adPXY9XKnVnF3f", "ZaMBpgFl0HhrMzzYNHthgICF"))
+from project.models import Users
 
+class Users(db.model):
+    id=db.Column(db.Integer, primary_key= True)
+    email=db.Column(db.string(120), nullable= False)
+    name=db.Column(db.string(50), nullable= False)
+    phone_number=db.Column(db.Integer(120), nullable= False)
 
 @main.route('/predata', methods= ['GET', 'POST'])
 def app_charge():
@@ -18,7 +24,11 @@ def app_charge():
         email = request.form.get('email')
         name = request.form.get('name')
         phone_number = request.form.get('phone_number')
-        return redirect(url_for('main.pay', email=email, name=name, phone_number=phone_number))
+        user = User(email=email, name=name, phone_number=phone_number)
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for('pay', id=user.id))
+    
     
     
 @main.route('/pay/<id>', methods= ['GET', 'POST'])
