@@ -71,6 +71,7 @@ def upload_file():
     print(dfb)
     states= df1[['Ship To State']] 
     states= states.nunique() 
+    states= pd.DataFrame(states) 
     totalTax= df1.agg({'Total Tax Amount': ['sum']})
     
     dfc= data[['Ship To State', 'Total Tax Amount', 'Transaction Type']]
