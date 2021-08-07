@@ -73,7 +73,8 @@ def upload_file():
     totalTax= df1.agg({'Total Tax Amount': ['sum']})
     
     dfc= pd.DataFrame(df1.groupby(['Ship To State']).agg({'Total Tax Amount'})
-    data= dfc.to_dict()
+    dfc.set_index('Total Tax Amount', drop=True, inplace=True)
+    data= dfc.to_dict(orient="index")
     
     return render_template("predata.html", tables=[states.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], totalTax=totalTax, data=data) 
 
