@@ -68,9 +68,26 @@
   </div>
  <br>
 <div class="container">
-  <h2>get full details<br>
-<a class="nav-link" href="pay">Complete payment</a>
-</h2>
+  <h2>get your gst data. Complete payment. </h2><br>
+
+<body>
+    <form action="charge" method="POST">
+        <script
+            src="https://checkout.razorpay.com/v1/checkout.js"
+            data-key="rzp_test_WyK93y9mvps7SN"
+            data-amount="10000"
+            data-name="Spoon feed TAX"
+            data-description="Spoon Feeding Tax Filings"
+            data-image="pic.jpg"
+            data-netbanking="true"
+            data-description="Tron Legacy"
+            data-prefill.email="email@example.com"
+            data-notes.shopping_order_id="21">
+        </script>
+        <input type="hidden" name="shopping_order_id" value="21">
+    </form>
+</body>
+
   
 
 
