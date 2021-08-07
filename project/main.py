@@ -4,9 +4,20 @@ import pandas as pd
 import os.path
 import matplotlib.pyplot as plt
 import json
+import razorpay
 
 main = Blueprint('main', __name__)
 
+
+razorpay_client = razorpay.Client(auth=("rzp_live_adPXY9XKnVnF3f", "ZaMBpgFl0HhrMzzYNHthgICF"))
+
+
+@app.route('/charge', methods=['POST'])
+def app_charge():
+    amount = 100
+    payment_id = request.form['razorpay_payment_id']
+    razorpay_client.payment.capture(payment_id, amount)
+    return json.dumps(razorpay_client.payment.fetch(payment_id))
 
 
 @main.route('/', methods=['GET', 'POST'])
