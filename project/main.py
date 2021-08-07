@@ -18,10 +18,7 @@ def app_charge():
         email = request.form.get('email')
         name = request.form.get('name')
         phone_number = request.form.get('phone_number')
-        user = User(email=email, name=name, phone_number=phone_number)
-        db.session.add(user)
-        db.session.commit()
-        return redirect(url_for('pay', id=user.id))
+        return redirect(url_for('pay', email=email, name=name, phone_number=phone_number))
     
     
 @main.route('/pay/<id>', methods= ['GET', 'POST'])
