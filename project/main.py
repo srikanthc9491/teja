@@ -24,7 +24,7 @@ def app_charge():
         return redirect(url_for('pay', id=user.id))
     
     
-@main.root('/pay/<id>', methods= ['GET', 'POST'])
+@main.route('/pay'/<id>, methods= ['GET', 'POST'])
 def pay(id):
     user=User.query.filter_by(id=id).first()
     client= razorpay.Client(auth=("rzp_live_adPXY9XKnVnF3f", "ZaMBpgFl0HhrMzzYNHthgICF"))
@@ -32,7 +32,7 @@ def pay(id):
     payment= client.order.create({'amount' : int(amount), 'currency' : 'INR', 'payment_capture' : '1'})
     return render_template('pay.html', payment = payment)
 
-@main.root('/data', methods= ['GET', 'POST'])
+@main.route('/data', methods= ['GET', 'POST'])
 def data():
    
     return render_template("data.html")
