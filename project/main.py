@@ -69,10 +69,7 @@ def upload_file():
     dfa= df1.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
     dfa= dfa.dropna
     print(dfb)
-    states= df1[['Ship To State']]
-    states= states.groupby(['Ship To State'])
-    states.reset_index(drop=True, inplace=True) 
-    states= pd.DataFrame(states) 
+    states= pd.DataFrame(df1['Ship To State'].unique()) 
     totalTax= df1.agg({'Total Tax Amount': ['sum']})
     
     dfc= data[['Ship To State', 'Total Tax Amount', 'Transaction Type']]
