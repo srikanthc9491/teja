@@ -100,9 +100,9 @@ def upload_file():
     return render_template("predata.html", tables=[states.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], totalTax=totalTax, data=data) 
 
 @main.route('/data', methods= ['GET', 'POST'])
-def data():
+def datae():
     data = session.get('gst')
-    dfd= pd.DataFrame(data)
+    dfd= pd.read_csv(data)
     df= dfd[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross','Total Tax Amount']]
     df['percent']= (df['Total Tax Amount']*100)/df['Tax Exclusive Gross']
     df['percent'] = df['percent'].round(0)
