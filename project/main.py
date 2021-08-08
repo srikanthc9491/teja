@@ -17,7 +17,7 @@ from run import db
 @main.route('/predata', methods= ['GET', 'POST'])
 def app_charge():
     if request.method == "POST":
-        user = session.current_user
+        user = User.query.get(user)
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('pay', id=user.id))
