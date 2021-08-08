@@ -104,9 +104,9 @@ def data(dfa, Refund, Cancel):
     dfa
     Refund
     Cancel
+    data(upload_file())
     return render_template("data.html",tables=[dfa.to_html(classes='data', header=False),Refund.to_html(classes='data', header=False), Cancel.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states', 'Your Refunds','Your Cancellations'])
-data(upload_file())
-    
+
 
 
 
