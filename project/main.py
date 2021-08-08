@@ -9,7 +9,7 @@ import razorpay
 main = Blueprint('main', __name__)
 
 
-razorpay_client = razorpay.Client(auth=("rzp_live_adPXY9XKnVnF3f", "ZaMBpgFl0HhrMzzYNHthgICF"))
+razorpay_client = razorpay.Client(auth=("rzp_test_eTLJcDvEJdeU2G", "a2TS4HG8wpO84TuiPZHiG0CR"))
 from project.models import User
 from run import db 
 
@@ -25,7 +25,7 @@ def app_charge():
 @main.route('/pay/<id>', methods= ['GET', 'POST'])
 def pay(id):
     user=User.query.filter_by(id=id).first()
-    client= razorpay.Client(auth=("rzp_live_adPXY9XKnVnF3f", "ZaMBpgFl0HhrMzzYNHthgICF"))
+    client= razorpay.Client(auth=("rzp_test_eTLJcDvEJdeU2G", "a2TS4HG8wpO84TuiPZHiG0CR"))
     amount = 10000
     payment= client.order.create({'amount' : int(amount), 'currency' : 'INR', 'payment_capture' : '1'})
     return render_template('pay.html', payment = payment)
