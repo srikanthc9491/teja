@@ -120,7 +120,7 @@ def data():
   
     dfa= df1.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
     dfa= dfa.dropna
-    return render_template("data.html",tables=[dfa.to_html(classes='data', header=True), Cancel.to_html(classes='data', header=True), dfb.to_html(classes='data', header=True)], titles = ['na', 'you have to file GSTR 1 for these states', 'your refunds', 'Cancelled orders'])
+    return render_template("data.html", tables=[dfa.to_html(classes='data', header=True), Cancel.to_html(classes='data', header=True), dfb.to_html(classes='data', header=True)], titles = ['na', 'you have to file GSTR 1 for these states', 'your refunds', 'Cancelled orders'])
 
 
 
