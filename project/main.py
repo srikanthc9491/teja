@@ -32,8 +32,11 @@ def pay(id):
 
 @main.route('/data', methods= ['GET', 'POST'])
 def data():
-   
-    return render_template("data.html")
+    dfa
+    Refund
+    Cancel
+    data(upload_file())
+    return render_template("data.html",tables=[dfa.to_html(classes='data', header=False),Refund.to_html(classes='data', header=False), Cancel.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states', 'Your Refunds','Your Cancellations'])
 
 
 @main.route('/', methods=['GET', 'POST'])
@@ -100,7 +103,8 @@ def upload_file():
     totalTax= df1.agg({'Total Tax Amount': ['sum']})
     
     dfc= df1.groupby(['Ship To State']).agg({'Total Tax Amount': ['sum']})
-    data= states.to_dict('index')    
+    data= states.to_dict('index')
+    session['my_var'] = 'my_value'
     return render_template("predata.html", tables=[states.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], totalTax=totalTax, data=data) 
 
     
