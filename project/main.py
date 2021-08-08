@@ -5,7 +5,7 @@ import os.path
 import matplotlib.pyplot as plt
 import json
 import razorpay
-
+from pandas import to_json
 main = Blueprint('main', __name__)
 
 
@@ -96,12 +96,13 @@ def upload_file():
     
     dfc= df1.groupby(['Ship To State']).agg({'Total Tax Amount': ['sum']})
     data= states.to_dict('index')
-    session["data"] = dfa
+    session["data"] = dfa.to_json()
     return render_template("predata.html", tables=[states.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], totalTax=totalTax, data=data) 
 
 @main.route('/data', methods= ['GET', 'POST'])
 def data():
     dfa = session.get('data')
+    dfa= pd.read_json(dfa)
     return render_template("data.html",tables=[dfa.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'])
 
 
