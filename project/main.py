@@ -21,9 +21,9 @@ def app_charge():
     
     
     
-@main.route('/pay/<id>', methods= ['GET', 'POST'])
-def pay(id):
-    user=User.query.filter_by(id=user_id).first()
+@main.route('/pay/<user_id>', methods= ['GET', 'POST'])
+def pay(user_id):
+    user=User.query.filter_by(user_id=user_id).first()
     client= razorpay.Client(auth=("rzp_test_eTLJcDvEJdeU2G", "a2TS4HG8wpO84TuiPZHiG0CR"))
     amount = 10000
     payment= client.order.create({'amount' : int(amount), 'currency' : 'INR', 'payment_capture' : '1'})
