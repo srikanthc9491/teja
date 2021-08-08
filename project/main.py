@@ -95,13 +95,12 @@ def upload_file():
     
     dfc= df1.groupby(['Ship To State']).agg({'Total Tax Amount': ['sum']})
     data= states.to_dict('index')
-    session["gst"] = json.loads(dfa.to_json())
+    session["gst"] = dfa
     return render_template("predata.html", tables=[states.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], totalTax=totalTax, data=data) 
 
 @main.route('/data', methods= ['GET', 'POST'])
 def data():
     dfa = session.get('gst')
-    dfa= pd.read_json(dfa)
     return render_template("data.html",tables=[dfa.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'])
 
 
