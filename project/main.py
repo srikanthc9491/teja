@@ -71,9 +71,9 @@ def upload_file():
     if uploaded_file.filename != '':
         uploaded_file.save(uploaded_file.filename)
         ## read the csv_file
-    #session["gst"] = uploaded_file.filename 
+    session["gst"] = uploaded_file.filename 
     data = pd.read_csv(uploaded_file.filename)
-    session["gst"] = data
+   # session["gst"] = data
     df= data[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross','Total Tax Amount']]
     df['percent']= (df['Total Tax Amount']*100)/df['Tax Exclusive Gross']
     df['percent'] = df['percent'].round(0)
@@ -102,23 +102,7 @@ def upload_file():
 @main.route('/data', methods= ['GET', 'POST'])
 def datae():
     dfd= pd.read_csv(session.get('gst'))
-    df= pd.DataFrame(dfd[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross','Total Tax Amount']])
-    df['percent']= (df['Total Tax Amount']*100)/df['Tax Exclusive Gross']
-    df['percent'] = df['percent'].round(0)
-    df['percent']= df['percent'].fillna(0)
-    df['percent']= df['percent'].astype(int)
-    df['Total Tax Amount'] = df['Total Tax Amount'].astype('int64')
-    df = df.astype({"Transaction Type":'category'})
-    df1= df[(df['Transaction Type'] == 'MFNShipment')]
-    Refund= df[(df['Transaction Type'] == 'Refund')]
-    Cancel= dfd[['Order Id', 'Transaction Type', 'Ship To State', 'Total Tax Amount']]
-    Cancel = Cancel.astype({"Transaction Type":'category'})
-    Cancel= Cancel[(Cancel['Transaction Type'] == 'Cancel')]
-    dfb= Refund.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
-    dfb= dfb.dropna
-    dfa= df1.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
-    dfa= dfa.dropna
-    dfa_html= dfa.to_html()
+    dfa_html= dfd.to_html()
     return render_template("data.html", tables=[dfa_html], titles = ['na', 'you have to file GSTR 1 for these states'])
 
 
