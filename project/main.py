@@ -13,10 +13,6 @@ razorpay_client = razorpay.Client(auth=("rzp_live_adPXY9XKnVnF3f", "ZaMBpgFl0Hhr
 from project.models import User
 from run import db 
 
-class User(db.Model):
-    id=db.Column(db.Integer, primary_key= True)
-    email=db.Column(db.String(120), nullable= False)
-    name=db.Column(db.String(50), nullable= False)
     
 @main.route('/predata', methods= ['GET', 'POST'])
 def app_charge():
