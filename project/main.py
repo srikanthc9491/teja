@@ -30,14 +30,6 @@ def pay(id):
     payment= client.order.create({'amount' : int(amount), 'currency' : 'INR', 'payment_capture' : '1'})
     return render_template('pay.html', payment = payment)
 
-@main.route('/data', methods= ['GET', 'POST'])
-def data(dfa, Refund, Cancel):
-    dfa
-    Refund
-    Cancel
-    data(upload_file())
-    return render_template("data.html",tables=[dfa.to_html(classes='data', header=False),Refund.to_html(classes='data', header=False), Cancel.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states', 'Your Refunds','Your Cancellations'])
-
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
@@ -107,6 +99,13 @@ def upload_file():
     session['my_var'] = 'my_value'
     return render_template("predata.html", tables=[states.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], totalTax=totalTax, data=data) 
 
+@main.route('/data', methods= ['GET', 'POST'])
+def data(dfa, Refund, Cancel):
+    dfa
+    Refund
+    Cancel
+    return render_template("data.html",tables=[dfa.to_html(classes='data', header=False),Refund.to_html(classes='data', header=False), Cancel.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states', 'Your Refunds','Your Cancellations'])
+data(upload_file())
     
 
 
