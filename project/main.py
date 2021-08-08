@@ -71,10 +71,10 @@ def upload_file():
     if uploaded_file.filename != '':
         uploaded_file.save(uploaded_file.filename)
         ## read the csv_file
-    session["gst"] = uploaded_file.filename 
+    #session["gst"] = uploaded_file.filename 
     data = pd.read_csv(uploaded_file.filename)
-   #session["gst"] = data
     df= data[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross','Total Tax Amount']]
+    session["gst"] = df
     df['percent']= (df['Total Tax Amount']*100)/df['Tax Exclusive Gross']
     df['percent'] = df['percent'].round(0)
     df['percent']= df['percent'].fillna(0)
