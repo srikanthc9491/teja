@@ -102,7 +102,7 @@ def upload_file():
 @main.route('/data', methods= ['GET', 'POST'])
 def data():
     data = session.get('gst')
-    dfa= pd.read_csv(uploaded_file.filename)
+    dfa= pd.read_csv(data)
     return render_template("data.html",tables=[dfa.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'])
 
 
