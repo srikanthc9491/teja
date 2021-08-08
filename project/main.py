@@ -31,7 +31,7 @@ def pay(id):
     return render_template('pay.html', payment = payment)
 
 @main.route('/data', methods= ['GET', 'POST'])
-def data():
+def data(dfa, Refund, Cancel):
     dfa
     Refund
     Cancel
