@@ -101,8 +101,7 @@ def upload_file():
 
 @main.route('/data', methods= ['GET', 'POST'])
 def datae():
-    data = session.get('gst')
-    dfd= pd.read_csv(data)
+    dfd= pd.read_csv(session.get('gst'))
     df= pd.DataFrame(dfd[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross','Total Tax Amount']])
     df['percent']= (df['Total Tax Amount']*100)/df['Tax Exclusive Gross']
     df['percent'] = df['percent'].round(0)
@@ -119,8 +118,7 @@ def datae():
     dfb= dfb.dropna
     dfa= df1.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
     dfa= dfa.dropna
-    dfe= pd.DataFrame(dfa)
-    dfa_html= dfe.to_html()
+    dfa_html= dfa.to_html()
     return render_template("data.html", tables=[dfa_html], titles = ['na', 'you have to file GSTR 1 for these states'])
 
 
