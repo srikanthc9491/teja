@@ -103,7 +103,7 @@ def upload_file():
 def datae():
     data = session.get('gst')
     dfd= pd.read_csv(data)
-    df= dfd[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross','Total Tax Amount']]
+    df= pd.DataFrame(dfd[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross','Total Tax Amount']])
     df['percent']= (df['Total Tax Amount']*100)/df['Tax Exclusive Gross']
     df['percent'] = df['percent'].round(0)
     df['percent']= df['percent'].fillna(0)
