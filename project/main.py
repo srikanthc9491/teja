@@ -16,14 +16,14 @@ from run import db
 @main.route('/predata', methods= ['GET', 'POST'])
 def app_charge():
     if request.method == "POST":
-        return redirect(url_for('main.pay', user_id=current_user.user_id))
+        return redirect(url_for('main.pay', id=current_user.id))
         
     
     
     
-@main.route('/pay/<user_id>', methods= ['GET', 'POST'])
-def pay(user_id):
-    user=User.query.filter_by(user_id=user_id).first()
+@main.route('/pay/<id>', methods= ['GET', 'POST'])
+def pay(id):
+    user=User.query.filter_by(id=id).first()
     client= razorpay.Client(auth=("rzp_test_eTLJcDvEJdeU2G", "a2TS4HG8wpO84TuiPZHiG0CR"))
     amount = 10000
     payment= client.order.create({'amount' : int(amount), 'currency' : 'INR', 'payment_capture' : '1'})
