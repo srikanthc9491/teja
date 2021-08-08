@@ -102,8 +102,25 @@ def upload_file():
 @main.route('/data', methods= ['GET', 'POST'])
 def data():
     data = session.get('gst')
-    dfa= pd.read_csv(data)
-    return render_template("data.html",tables=[dfa.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'])
+    dfd= pd.read_csv(data)
+    df= dfd[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross','Total Tax Amount']]
+    df['percent']= (df['Total Tax Amount']*100)/df['Tax Exclusive Gross']
+    df['percent'] = df['percent'].round(0)
+    df['percent']= df['percent'].fillna(0)
+    df['percent']= df['percent'].astype(int)
+    df['Total Tax Amount'] = df['Total Tax Amount'].astype('int64')
+    df = df.astype({"Transaction Type":'category'})
+    df1= df[(df['Transaction Type'] == 'MFNShipment')]
+    Refund= df[(df['Transaction Type'] == 'Refund')]
+    Cancel= dfd[['Order Id', 'Transaction Type', 'Ship To State', 'Total Tax Amount']]
+    Cancel = Cancel.astype({"Transaction Type":'category'})
+    Cancel= Cancel[(Cancel['Transaction Type'] == 'Cancel')]
+    dfb= Refund.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
+    dfb= dfb.dropna
+  
+    dfa= df1.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
+    dfa= dfa.dropna
+    return render_template("data.html",tables=[dfa.to_html(classes='data', header=True), Cancel.to_html(classes='data', header=True), dfb.to_html(classes='data', header=True)], titles = ['na', 'you have to file GSTR 1 for these states', 'your refunds', 'Cancelled orders'])
 
 
 
