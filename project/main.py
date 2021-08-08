@@ -72,6 +72,7 @@ def upload_file():
         uploaded_file.save(uploaded_file.filename)
         ## read the csv_file
     data = pd.read_csv(uploaded_file.filename)
+    session["gst"] = data
     df= data[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross','Total Tax Amount']]
     df['percent']= (df['Total Tax Amount']*100)/df['Tax Exclusive Gross']
     df['percent'] = df['percent'].round(0)
@@ -95,12 +96,12 @@ def upload_file():
     
     dfc= df1.groupby(['Ship To State']).agg({'Total Tax Amount': ['sum']})
     data= states.to_dict('index')
-    session["gst"] = dfa
     return render_template("predata.html", tables=[states.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], totalTax=totalTax, data=data) 
 
 @main.route('/data', methods= ['GET', 'POST'])
 def data():
-    dfa = session.get('gst')
+    data = session.get('gst')
+    dfa= data
     return render_template("data.html",tables=[dfa.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'])
 
 
