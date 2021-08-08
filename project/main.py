@@ -21,9 +21,7 @@ class User(db.Model):
 @main.route('/predata', methods= ['GET', 'POST'])
 def app_charge():
     if request.method == "POST":
-        email = request.form.get('email')
-        name = request.form.get('name')  
-        user = User(email=email, name=name)
+        user = User.query.filter_by(name=name)
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('pay', id=user.id))
