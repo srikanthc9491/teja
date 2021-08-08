@@ -118,8 +118,9 @@ def datae():
     dfb= Refund.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
     dfb= dfb.dropna
     dfa= df1.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
-    dfa= dfa.dropna 
-    return render_template("data.html", tables=[pd.DataFrame(dfa).to_html(classes='data', header=False), pd.DataFrame(dfb).to_html(classes='data', header=False), pd.DataFrame(Cancel).to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states', 'your refunds', 'Cancelled orders'])
+    dfa= dfa.dropna
+    dfa_html= dfa.to_html()
+    return render_template("data.html", tables=[dfa_html], titles = ['na', 'you have to file GSTR 1 for these states'])
 
 
 
