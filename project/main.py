@@ -102,7 +102,18 @@ def upload_file():
 @main.route('/data', methods= ['GET', 'POST'])
 def datae():
     dfd= pd.read_csv(session.get('gst'))
-    dfa_html= dfd.to_html()
+    gstin= dfd['Seller Gstin'].iloc[0]
+    df= dfd[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross', 'Total Tax Amount']]
+    df['percent']= (df['Total Tax Amount']*100)/df['Tax Exclusive Gross']
+    df['percent'].fillna(0)
+    df['percent'] = df['percent'].round(0)
+    df['percent']= df['percent'].fillna(0)
+    df['percent']= df['percent'].astype(int)
+    df['Total Tax Amount'] = df['Total Tax Amount'].astype('int64')
+    df = df.astype({"Transaction Type":'category'})
+    df1= df[(df['Transaction Type'] == 'MFNShipment')]
+    Refund= df[(df['Transaction Type'] == 'Refund')]
+    dfa_html= df.to_html()
     return render_template("data.html", tables=[dfa_html], titles = ['na', 'you have to file GSTR 1 for these states'])
 
 
