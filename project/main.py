@@ -118,7 +118,7 @@ def datae():
     dfa_html= dfa.to_html()
     Refund_html= Refund.to_html()
     Cancel_html= Cancel.to_html()
-    return render_template("data.html", tables=[dfa_html, Refund_html, Cancel_html], titles = ['na', 'you have to file GSTR 1 for these states', 'Your Refunds', 'Your Cancelled Order Data'])
+    return render_template("data.html", tables=[dfa_html, Refund_html, Cancel_html], titles = ['na', 'you have to file GSTR 1 for these states', 'Your Refunds', 'Your Cancelled Order Data'], gstin=gstin)
 
 
 
