@@ -14,19 +14,12 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
-<div class=page>
-<h2> {% print gstin %} </h2>
-{% for table in tables %}
-    <h2>{{titles[loop.index]}}</h2>
-    {{ table|safe }}
-  {% endfor %}
-  </div>
- <br>
-<div class="container">
+  
+  
+  <div class="container">
   <h2>Follow the steps to file your GST Returns</h2>
   <div class="card">
-    <div class="card-body">Log in to your GSTR portal and Go to File Returns.
+    <div class="card-body">Log in to your GSTR portal and Go to File Returns. Your GSTIN Number is:
      {% print gstin %} </div>
   </div>
   <br>
@@ -52,6 +45,20 @@
   <br>
     <br>
     <br>
+  
+  
+  
+  
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+<h2> {% print gstin %} </h2>
+{% for table in tables %}
+    <h2>{{titles[loop.index]}}</h2>
+    {{ table|safe }}
+  {% endfor %}
+  </div>
+ <br>
+
 
 
 </body>
