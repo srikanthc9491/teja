@@ -103,6 +103,7 @@ def upload_file():
 def datae():
     dfd= pd.read_csv(session.get('gst'))
     gstin= dfd['Seller Gstin'].iloc[0]
+    dfw= dfd[['Transaction Type', 'Ship To State','Order Id']]
     df= dfd[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross', 'Total Tax Amount']]
     df['percent']= (df['Total Tax Amount']*100)/df['Tax Exclusive Gross']
     df['percent'].fillna(0)
@@ -113,7 +114,8 @@ def datae():
     df = df.astype({"Transaction Type":'category'})
     df1= df[(df['Transaction Type'] != 'Refund') & (df['Transaction Type'] != 'Cancel')]
     Refund= df[(df['Transaction Type'] == 'Refund')]
-    Cancel= df[(df['Transaction Type'] == 'Cancel')]
+    dfw = dfw.astype({"Transaction Type":'category'})
+    Cancel= dfw[(dfw['Transaction Type'] == 'Cancel')]
     dfa= df1.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
     dfa_html= dfa.to_html()
     Refund_html= Refund.to_html()
