@@ -111,9 +111,9 @@ def datae():
     df['percent']= df['percent'].astype(int)
     df['Total Tax Amount'] = df['Total Tax Amount'].astype('int64')
     df = df.astype({"Transaction Type":'category'})
-    df1= df[(df['Transaction Type'] == 'MFNShipment')]
+    df1= df[(df['Transaction Type'] != 'Refund' & df['Transaction Type'] != 'Cancel')]
     Refund= df[(df['Transaction Type'] == 'Refund')]
-    Cancel= df[(df['Transaction Type'] == 'Canel')]
+    Cancel= df[(df['Transaction Type'] == 'Cancel')]
     dfa= df1.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
     dfa_html= dfa.to_html()
     Refund_html= Refund.to_html()
