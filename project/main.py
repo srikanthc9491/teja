@@ -113,7 +113,8 @@ def datae():
     df = df.astype({"Transaction Type":'category'})
     df1= df[(df['Transaction Type'] == 'MFNShipment')]
     Refund= df[(df['Transaction Type'] == 'Refund')]
-    dfa_html= df.to_html()
+    dfa= df1.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
+    dfa_html= dfa.to_html()
     return render_template("data.html", tables=[dfa_html], titles = ['na', 'you have to file GSTR 1 for these states'])
 
 
