@@ -116,7 +116,7 @@ def datae():
     Refund= df[(df['Transaction Type'] == 'Refund')]
     dfw = dfw.astype({"Transaction Type":'category'})
     Cancel= dfw[(dfw['Transaction Type'] == 'Cancel')]
-    dfa= df1.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
+    dfa= df1.groupby(['Ship To State', 'percent']).agg({'Tax Exclusive Gross': ['sum']})
     dfa_html= dfa.to_html()
     Refund_html= Refund.to_html()
     Cancel_html= Cancel.to_html()
