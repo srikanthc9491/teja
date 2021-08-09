@@ -81,7 +81,7 @@ def upload_file():
     df['percent']= df['percent'].astype(int)
     df['Total Tax Amount'] = df['Total Tax Amount'].astype('int64')
     df = df.astype({"Transaction Type":'category'})
-    df1= df[(df['Transaction Type'] == 'MFNShipment')]
+    df1= df[(df['Transaction Type'] != 'Refund') & (df['Transaction Type'] != 'Cancel')]
     Refund= df[(df['Transaction Type'] == 'Refund')]
     Cancel= data[['Order Id', 'Transaction Type', 'Ship To State', 'Total Tax Amount']]
     Cancel = Cancel.astype({"Transaction Type":'category'})
@@ -111,7 +111,7 @@ def datae():
     df['percent']= df['percent'].astype(int)
     df['Total Tax Amount'] = df['Total Tax Amount'].astype('int64')
     df = df.astype({"Transaction Type":'category'})
-    df1= df[(df['Transaction Type'] != 'Refund' & df['Transaction Type'] != 'Cancel')]
+    df1= df[(df['Transaction Type'] != 'Refund') & (df['Transaction Type'] != 'Cancel')]
     Refund= df[(df['Transaction Type'] == 'Refund')]
     Cancel= df[(df['Transaction Type'] == 'Cancel')]
     dfa= df1.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
