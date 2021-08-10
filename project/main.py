@@ -97,7 +97,7 @@ def upload_file():
     states.set_index=['Ship To State']
     statestable= pd.DataFrame(df1['Ship To State'].unique())
     dfc= df1.groupby(['Ship To State']).agg({'Total Tax Amount': ['sum']})
-    data= states.to_dict('records')
+    data= states.to_dict()
     return render_template("predata.html", tables=[statestable.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], totalTax=totalTax, data=data) 
 
 @main.route('/data', methods= ['GET', 'POST'])
