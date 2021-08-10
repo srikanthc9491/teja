@@ -95,7 +95,8 @@ def upload_file():
     totalTax= df1.agg({'Total Tax Amount': ['sum']})
     df3= df[(df['Transaction Type'] != 'Refund') & (df['Transaction Type'] != 'Cancel')]
     states= df3[['Ship To State', 'Total Tax Amount']]
-    states= states.set_index('Ship To State').T.to_dict('list')
+    states=dict(states.values)
+  #  states= states.set_index('Ship To State').T.to_dict('list')
     statestable= pd.DataFrame(df1['Ship To State'].unique())
     dfc= df1.groupby(['Ship To State']).agg({'Total Tax Amount': ['sum']})
     data= states
