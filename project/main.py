@@ -92,9 +92,9 @@ def upload_file():
     dfa= df1.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
     dfa= dfa.dropna
     print(dfb)
-    states= pd.DataFrame(df1['Ship To State'].unique()) 
     totalTax= df1.agg({'Total Tax Amount': ['sum']})
-    
+    states= df[['Ship To State', 'Total Tax Amount']]
+    states.set_index=['Ship To State']
     dfc= df1.groupby(['Ship To State']).agg({'Total Tax Amount': ['sum']})
     data= states.to_dict('index')
     return render_template("predata.html", tables=[states.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], totalTax=totalTax, data=data) 
