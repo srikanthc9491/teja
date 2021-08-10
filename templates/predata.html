@@ -26,11 +26,7 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
 			{% for key, value in data.items() %}
-				{% if value is string %}
-					['{{ key }}', '{{ value }}'],
-				{% else %}
-					['{{ key }}', {{ value }}],
-				{% endif %}
+				['{{ key }}', '{{ value }}']
 			{% endfor %}
         ]);
 
@@ -45,19 +41,12 @@
     </script>
 </head>
 <body>
-	<div style="margin: 10px 0 0 10px;width: 1000px">
+	<div style="margin: 1px 0 0 1px;width: 90%">
 		<h3>States wise Tax Pie Chart</h3>
 		
-		<div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+		<div id="piechart_3d" style="width: 90%; height: 500px;"></div>
 	</div>
-</body>
 
-
-
-
-
-
-<body>
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <div class=page>
   <h2> {% print totalTax %} </h2>
