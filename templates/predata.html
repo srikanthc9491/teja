@@ -26,7 +26,11 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
 			{% for key, value in data.items() %}
-				['{{ key }}', '{{ value }}']
+				{% if value is string %}
+					['{{ key }}', '{{ value }}'],
+				{% else %}
+					['{{ key }}', {{ value }}],
+				{% endif %}
 			{% endfor %}
         ]);
 
