@@ -92,6 +92,11 @@ def upload_file():
     dfa= df1.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
     dfa= dfa.dropna
     print(dfb)
+    gstin= data['Seller Gstin'].iloc[0]
+    no_orders= df1['Transaction Type'].count()
+    no_refunds= Refund['Transaction Type'].count()
+    no_cancel= Cancel['Transaction Type'].count()
+    totalSale= df1.agg({'Tax Exclusive Gross': ['sum']})
     totalTax= df1.agg({'Total Tax Amount': ['sum']})
     df3= df[(df['Transaction Type'] != 'Refund') & (df['Transaction Type'] != 'Cancel')]
     states= df3[['Ship To State', 'Total Tax Amount']]
@@ -100,7 +105,7 @@ def upload_file():
     statestable= pd.DataFrame(df1['Ship To State'].unique())
     dfc= df1.groupby(['Ship To State']).agg({'Total Tax Amount': ['sum']})
     data= states
-    return render_template("predata.html", tables=[statestable.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], totalTax=totalTax, data=data) 
+    return render_template("predata.html", tables=[statestable.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], gstin=gstin, no_orders=no_orders, totalTax=totalTax, data=data, no_refunds=no_refunds, no_cancel=no_cancel, totalSale=totalSale) 
 
 @main.route('/data', methods= ['GET', 'POST'])
 def datae():
