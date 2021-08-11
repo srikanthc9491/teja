@@ -98,8 +98,7 @@ def upload_file():
     no_cancel= Cancel['Transaction Type'].count()
     totalSale= df1.agg({'Tax Exclusive Gross': ['sum']})
     totalTax= df1.agg({'Total Tax Amount': ['sum']})
-    df3= df[(df['Transaction Type'] != 'Refund') & (df['Transaction Type'] != 'Cancel')]
-    states= df3[['Ship To State', 'Total Tax Amount']]
+    states= df1[['Ship To State', 'Total Tax Amount']]
     states=dict(states.values)
   #  states= states.set_index('Ship To State').T.to_dict('list')
     statestable= pd.DataFrame(df1['Ship To State'].unique())
@@ -128,7 +127,13 @@ def datae():
     dfa_html= dfa.to_html()
     Refund_html= Refund.to_html()
     Cancel_html= Cancel.to_html()
-    return render_template("data.html", tables=[dfa_html, Refund_html, Cancel_html], titles = ['na', 'you have to file GSTR 1 for these states', 'Your Refunds', 'Your Cancelled Order Data'], gstin=gstin)
+    
+    no_orders= df1['Transaction Type'].count()
+    no_refunds= Refund['Transaction Type'].count()
+    no_cancel= Cancel['Transaction Type'].count()
+    totalSale= df1.agg({'Tax Exclusive Gross': ['sum']})
+    totalTax= df1.agg({'Total Tax Amount': ['sum']})
+    return render_template("data.html", tables=[dfa_html, Refund_html, Cancel_html], titles = ['na', 'you have to file GSTR 1 for these states', 'Your Refunds', 'Your Cancelled Order Data'], gstin=gstin, no_orders=no_orders, totalTax=totalTax, no_refunds=no_refunds, no_cancel=no_cancel, totalSale=totalSale)
 
 
 
