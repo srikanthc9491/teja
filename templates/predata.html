@@ -2,17 +2,31 @@
 
 
 {% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>SpoonfeeTAX</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<head>	
+	  <title>SpoonfeeTAX</title>
 </head>
+<div class="container-fluid"><br>
+  
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>       </h1>
+            
+           
+            </div>
+    </div>
+</div>
+</div>
+
+
 	
 	<div 
 	     class="card bg-light text-dark">
@@ -24,6 +38,7 @@
 		</div>
 		
  	 </div
+  <br>
 
 	<div 
 	     class="card bg-danger text-white">
@@ -35,6 +50,7 @@
 		</div>
 		
  	 </div
+  <br>
 	
 		
 	<div 
@@ -47,6 +63,7 @@
 		</div>
 		
  	 </div	
+  <br>
 		
 	<div 
 	     class="card bg-info text-white">
@@ -58,6 +75,7 @@
 		</div>
 		
  	 </div		
+  <br>
 		
 	<div 
 	     class="card bg-warning text-white">
@@ -69,6 +87,7 @@
 		</div>
 		
  	 </div	
+  <br>
 		
 	<div 
 	     class="card bg-danger text-white">
@@ -81,9 +100,9 @@
 		
  	 </div
 		
+  <br>
 		
 	<h2> {% print "For State wise and step wise Gst details, Complete Payment!" %} </h2>
-
 
 <head>
 	<meta charset="UTF-8">
@@ -104,7 +123,7 @@
         ]);
 
         var options = {
-          title: 'State Wise Tax',
+          title: 'My Daily Activities',
           is3D: true,
         };
 
@@ -114,11 +133,13 @@
     </script>
 </head>
 <body>
-	<div style="margin: 1px 0 0 1px;width: 90%">
-		<h3>States wise Tax Pie Chart</h3>
+	<div style="margin: 10px 0 0 10px;width: 1000px">
+		<h3>States wise Tax</h3>
 		
-		<div id="piechart_3d" style="width: 90%; height: 500px;"></div>
+		<div id="piechart_3d" style="width: 900px; height: 500px;"></div>
 	</div>
+</body>
+	<body>
 
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <div class=page>
