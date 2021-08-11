@@ -49,7 +49,7 @@
 <div class="container">
   <p>Note:We dont Save your data! </p>
   <div class="card" style="width:400px">
-    <img class="card-img-top" src="pic3.png" alt="amazon seller gst data. " style="width:100%">
+    <img class="card-img-top" src="totalsale.jpeg" alt="amazon seller MTR data. " style="width:100%">
     <div class="card-body">
       <h4 class="card-title">Total Sales for the Month.</h4>
       <p class="card-text">Total Revenue excluding GST.</p>
@@ -58,18 +58,7 @@
   </div>
   <br>
 		
-	<div 
-	     class="card bg-warning text-white">
-    		<div 
-	 class="card-body">
-	    <h2> 
-		    Total GST Collected by you: {% print totalTax %}
-	    </h2>
-		</div>
-		
- 	 </div	
-  <br>
-  <br>
+
 		
 	<div 
 	     class="card bg-info text-white">
@@ -108,7 +97,16 @@
 		
  	 </div
   <br>
-		
+	<div class="container">
+  <div class="card" style="width:400px">
+    <img class="card-img-top" src="gst.jpeg" alt="amazon seller gst data. " style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title">GST Collected for the Month.</h4>
+      <p class="card-text">Total GST to be paid.</p>
+      <a href="#" class="btn btn-primary">{% print totalTax %}</a>
+    </div>
+  </div>
+  <br>	
   <br>
 		
 	<h2> {% print "For State wise and step wise Gst details, Complete Payment!" %} </h2>
