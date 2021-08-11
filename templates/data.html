@@ -33,7 +33,7 @@
 
 	
 	<div 
-	     class="card bg-light text-dark">
+	     class="card bg-danger text-dark">
     		<div 
 	 class="card-body">
 	    <h2> 
@@ -46,35 +46,25 @@
 		  <br>
 
 
-	<div 
-	     class="card bg-info text-white">
-    		<div 
-	 class="card-body">
-	    <h2> 
-		    Your Total Sales with out Gst: {% print totalSale %}
-	    </h2>
-		</div>
-		
- 	 </div
-  <br>
-  <br>
 	
+
+ 
+<div class="container">
+  <p>Note:We dont Save your data! </p>
+  <div class="card" style="width:400px">
+	  <img class="card-img-top" src="{{url_for('static', filename='totalsale.jpeg')}}" alt="amazon sales data" id="responsive-image" Width=100%>
+    <div class="card-body">
+      <h4 class="card-title">Total Sales for the Month.</h4>
+      <p class="card-text">Total Revenue excluding GST.</p>
+      <a href="#" class="btn btn-primary">{% print totalSale %}</a>
+    </div>
+  </div>
+  <br>
+		
+
 		
 	<div 
 	     class="card bg-warning text-white">
-    		<div 
-	 class="card-body">
-	    <h2> 
-		    Total GST Collected by you: {% print totalTax %}
-	    </h2>
-		</div>
-		
- 	 </div	
-  <br>
-  <br>
-		
-	<div 
-	     class="card bg-info text-white">
     		<div 
 	 class="card-body">
 	    <h2> 
@@ -100,7 +90,7 @@
   <br>
 		
 	<div 
-	     class="card bg-info text-white">
+	     class="card bg-warning text-white">
     		<div 
 	 class="card-body">
 	    <h2> 
@@ -110,11 +100,18 @@
 		
  	 </div
   <br>
-		
+	<div class="container">
+  <div class="card" style="width:400px">
+	  <img class="card-img-top" src="{{url_for('static', filename='gst.jpeg')}}" alt="gst tax filing for amazon and ecommerce sellers" id="responsive-image" Width=100%>
+    <div class="card-body">
+      <h4 class="card-title">GST Collected for the Month.</h4>
+      <p class="card-text">Total GST to be paid.</p>
+      <a href="#" class="btn btn-primary">{% print totalTax %}</a>
+    </div>
+  </div>
+  <br>	
   <br>
-  
-  
-  
+		
   
   
   
