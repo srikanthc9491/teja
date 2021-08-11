@@ -49,7 +49,7 @@
 <div class="container">
   <p>Note:We dont Save your data! </p>
   <div class="card" style="width:400px">
-    <img class="card-img-top" src="totalsale.jpeg" alt="amazon seller MTR data. " style="width:100%">
+	  <img class="card-img-top" src="{{url_for('static', filename='totalsale.jpeg')}}" alt="amazon sales data from Merchant Tax Report." id="responsive-image" Width=100%>
     <div class="card-body">
       <h4 class="card-title">Total Sales for the Month.</h4>
       <p class="card-text">Total Revenue excluding GST.</p>
@@ -99,7 +99,7 @@
   <br>
 	<div class="container">
   <div class="card" style="width:400px">
-    <img class="card-img-top" src="gst.jpeg" alt="amazon seller gst data. " style="width:100%">
+	  <img class="card-img-top" src="{{url_for('static', filename='gst.jpeg')}}" alt="gst tax filing for amazon and ecommerce sellers" id="responsive-image" Width=100%>
     <div class="card-body">
       <h4 class="card-title">GST Collected for the Month.</h4>
       <p class="card-text">Total GST to be paid.</p>
