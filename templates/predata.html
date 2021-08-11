@@ -30,7 +30,7 @@
 
 	
 	<div 
-	     class="card bg-light text-dark">
+	     class="card bg-danger text-dark">
     		<div 
 	 class="card-body">
 	    <h2> 
@@ -61,7 +61,7 @@
 
 		
 	<div 
-	     class="card bg-info text-white">
+	     class="card bg-warning text-white">
     		<div 
 	 class="card-body">
 	    <h2> 
@@ -87,7 +87,7 @@
   <br>
 		
 	<div 
-	     class="card bg-info text-white">
+	     class="card bg-warning text-white">
     		<div 
 	 class="card-body">
 	    <h2> 
@@ -112,6 +112,19 @@
 	<h2> {% print "For State wise and step wise Gst details, Complete Payment!" %} </h2>
   <br>
   <br>
+
+
+	<body>
+
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+
+{% for table in tables %}
+    <h2>{{titles[loop.index]}}</h2>
+    {{ table|safe }}
+  {% endfor %}
+  </div>
+ <br>
 
 <head>
 	<meta charset="UTF-8">
@@ -144,17 +157,7 @@
 		<div id="piechart_3d" style="width: 400px; height: 400px;"></div>
 	</div>
 </body>
-	<body>
-
-  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
-<div class=page>
-
-{% for table in tables %}
-    <h2>{{titles[loop.index]}}</h2>
-    {{ table|safe }}
-  {% endfor %}
-  </div>
- <br>
+<br><br>
 <div class="container">
   <h2>Get your detailed GST data. <br> Just Pay 100/- for our coffee.. </h2><br>
 	
