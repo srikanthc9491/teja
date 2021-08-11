@@ -13,7 +13,76 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
+	
+	<div 
+	     class="card bg-light text-dark">
+    		<div 
+	 class="card-body">
+	    <h2> 
+		    Your Gst Number is {% print gstin %}
+	    </h2>
+		</div>
+		
+ 	 </div
 
+	<div 
+	     class="card bg-danger text-white">
+    		<div 
+	 class="card-body">
+	    <h2> 
+		    Your Total Sales with out Gst: {% print totalSale %}
+	    </h2>
+		</div>
+		
+ 	 </div
+	
+		
+	<div 
+	     class="card bg-warning text-white">
+    		<div 
+	 class="card-body">
+	    <h2> 
+		    Total GST Collected by you: {% print totalTax %}
+	    </h2>
+		</div>
+		
+ 	 </div	
+		
+	<div 
+	     class="card bg-info text-white">
+    		<div 
+	 class="card-body">
+	    <h2> 
+		    Total number of Succesful Orders by you: {% print no_orders %}
+	    </h2>
+		</div>
+		
+ 	 </div		
+		
+	<div 
+	     class="card bg-warning text-white">
+    		<div 
+	 class="card-body">
+	    <h2> 
+		    Total number of Returned Orders to you: {% print no_refunds %}
+	    </h2>
+		</div>
+		
+ 	 </div	
+		
+	<div 
+	     class="card bg-danger text-white">
+    		<div 
+	 class="card-body">
+	    <h2> 
+		    Cancelled Orders: {% print no_cancel %}
+	    </h2>
+		</div>
+		
+ 	 </div
+		
+		
+	<h2> {% print "For State wise and step wise Gst details, Complete Payment!" %} </h2>
 
 
 <head>
@@ -53,7 +122,7 @@
 
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <div class=page>
-  <h2> {% print totalTax %} </h2>
+
 {% for table in tables %}
     <h2>{{titles[loop.index]}}</h2>
     {{ table|safe }}
@@ -61,7 +130,7 @@
   </div>
  <br>
 <div class="container">
-  <h2>get your detailed gst data.Just Pay 100/- for our coffee.. </h2><br>
+  <h2>Get your detailed GST data. <br> Just Pay 100/- for our coffee.. </h2><br>
 	
 	<img src="https://www.buymeacoffee.com/assets/img/guidelines/download-assets-2.svg" alt="gst tax filing for amazon and ecommerce sellers" id="responsive-image" Width=90%>
 
