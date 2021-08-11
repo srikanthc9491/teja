@@ -11,6 +11,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+
 <head>	
 	  <title>SpoonfeeTAX</title>
 </head>
@@ -42,19 +43,20 @@
 		  <br>
 
 
-	<div 
-	     class="card bg-info text-white">
-    		<div 
-	 class="card-body">
-	    <h2> 
-		    Your Total Sales with out Gst: {% print totalSale %}
-	    </h2>
-		</div>
-		
- 	 </div
-  <br>
-  <br>
 	
+
+ 
+<div class="container">
+  <p>Note:We dont Save your data! </p>
+  <div class="card" style="width:400px">
+    <img class="card-img-top" src="pic3.png" alt="amazon seller gst data. " style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title">Total Sales for the Month.</h4>
+      <p class="card-text">Total Revenue excluding GST.</p>
+      <a href="#" class="btn btn-primary">{% print totalSale %}</a>
+    </div>
+  </div>
+  <br>
 		
 	<div 
 	     class="card bg-warning text-white">
@@ -122,7 +124,7 @@
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-			 {% for k,v in dic.items() %}
+			 {% for k,v in data.items() %}
               [{{k|safe}},  {{v|safe}}],
               {% endfor %}
         ]);
