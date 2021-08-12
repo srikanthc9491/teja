@@ -103,8 +103,7 @@
         <div class="col-md-12 text-center">
             <h1>Welcome to Spoon Feed TAX.</h1>
           </div>
-      <div class="hero-body">
-      <div class="container has-text-centered">
+      
            {% block title %}
 
     <div class="row">
@@ -114,6 +113,8 @@
             <h3>Refer Resources for more.</h3>
             </div>
     </div>
+        {% endblock %}
+      {% block content %}
     <div class="hero-body">
       <div class="container has-text-centered">
         
@@ -128,7 +129,7 @@
 
 
 
-  <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#demo"> <h3><center>Get your complete GST data in one click directly from your amazon MTR report.</center></h3></button></center>
+  <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#demo"> <h3><center>Get your complete GST data in one click directly from your amazon MTR report.</center></h3></button>
   <div id="demo" class="collapse">
  
 
