@@ -52,8 +52,18 @@
 	  <img class="card-img-top" src="{{url_for('static', filename='totalsale.jpeg')}}" alt="amazon sales data from Merchant Tax Report." id="responsive-image" Width=100%>
     <div class="card-body">
       <h4 class="card-title">Total Sales for the Month.</h4>
-      <p class="card-text">Total Revenue excluding GST.</p>
-      <a href="#" class="btn btn-primary">{% print totalSale %}</a>
+	    
+	    <div class="container">
+
+  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo"> <h2>Total Revenue excluding GST.</h2></button>
+  <div id="demo" class="collapse">
+   {% print totalSale.value %}
+  </div>
+	    
+	    
+	    
+	    
+	
     </div>
   </div>
   <br>
