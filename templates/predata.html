@@ -25,7 +25,6 @@
             </div>
     </div>
 </div>
-</div>
 
 
 	
@@ -55,14 +54,15 @@
 	    
 	    <div class="container">
 
-  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo"> <h2>Total Revenue excluding GST.</h2></button>
+  <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#demo"> <h2>Total Revenue excluding GST.</h2></button>
   <div id="demo" class="collapse">
-   {% print totalSale.value %}
+   {% print totalSale %}
   </div>
 	    
 	    
 	    
-	    
+	        </div>
+
 	
     </div>
   </div>
@@ -112,8 +112,16 @@
 	  <img class="card-img-top" src="{{url_for('static', filename='gst.jpeg')}}" alt="gst tax filing for amazon and ecommerce sellers" id="responsive-image" Width=100%>
     <div class="card-body">
       <h4 class="card-title">GST Collected for the Month.</h4>
-      <p class="card-text">Total GST to be paid.</p>
-      <a href="#" class="btn btn-primary">{% print totalTax %}</a>
+	    
+  <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#demo"> <h2>Total GST to be paid.</h2></button>
+  <div id="demo" class="collapse">
+   {% print totalTax %}
+  </div>
+	    
+	      </div>
+  
+	    
+	
     </div>
   </div>
   <br>	
