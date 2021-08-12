@@ -26,7 +26,7 @@
 <div class="container-fluid">
   <br>
   <h3>SpoonfeedTAX</h3>
-  <p>For Indian E-commerce Sellers  -- File GST Returns Easily in Simple Steps Using Our AI Calculated Data </p>
+{% block header %}  <p>For Indian E-commerce Sellers  -- File GST Returns Easily in Simple Steps Using Our AI Calculated Data </p>  {% endblock %}
   <p>We dont save your Data <strong>Note:</strong> This Module is under Development Process!</p>
 </div>
 
@@ -102,19 +102,71 @@
     <div class="row">
         <div class="col-md-12 text-center">
             <h1>Welcome to Spoon Feed TAX.</h1>
-            <h3>Let's get Paying GSTR-1.</h3>
+          </div>
+      <div class="hero-body">
+      <div class="container has-text-centered">
+           {% block title %}
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+      
+      <h3>Let's get Paying GSTR-1.</h3>
             <h3>Refer Resources for more.</h3>
             </div>
     </div>
     <div class="hero-body">
       <div class="container has-text-centered">
-         {% block content %}
+        
  <img src="{{url_for('static', filename='pic1.jpg')}}" alt="gst tax filing for amazon.in and flipkart sellers" id="responsive1-image" Width=99%%>
 <div class="container-fluid"><br>
-<h1>Currently, this website supports data only for amazon.in sellers </h1>
-<body>NO MORE lengthy-complicated Excel sheet operations and expensive Software for calculating your GST data.</body>
-<body>Get your complete GST data in one click directly from your amazon MTR report.</body>
+<h1>Currently, this website supports data only from amazon seller MTR</h1>
+<center>
 <h3>Go to FILE GSTR 1 and upload your MTR.</h3>
+</center>  
+  
+  
+  
+
+
+
+  <center><button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#demo"> <h3><center>Get your complete GST data in one click directly from your amazon MTR report.</center></h3></button></center>
+  <div id="demo" class="collapse">
+ 
+
+<div class="container p-4 my-3 bg-info text-white">
+ 
+  <p><center>NO MORE lengthy-complicated Excel sheet operations and expensive Software for calculating your GST data.</center> </p>
+    <h3><center>Get relevant Refund Data and cancellation data </center></h3>
+</div>
+  </div>
+</div>
+
+
+
+<div class="container p-3 my-3 bg-secondary text-white">
+  <h2><center>Free Sales Summary and total GST to be paid </center></h2>
+
+  <h3><center>Get Stepwise and Statewise GSTR-1 Data for just a cup of coffee </center></h3>
+</div>
+  <div class="container">
+
+  <center><button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo1"> <h2>Made this with ❤️ to help my MOM file her amazon gst returns.</h2></button></center>
+  <div id="demo1" class="collapse">
+  <center> © 2021 Copyright: spoonfeedTAX </center>
+  </div>
+</div>
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
          {% endblock %}
       </div>
   </div>
