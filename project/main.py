@@ -106,9 +106,10 @@ def upload_file():
     data= states
     return render_template("predata.html", tables=[statestable.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], gstin=gstin, no_orders=no_orders, totalTax=totalTax, data=data, no_refunds=no_refunds, no_cancel=no_cancel, totalSale=totalSale) 
 
-@main.route('/data'<payment_id>, methods= ['GET', 'POST'])
-def datae(payment_id):
-     if payment_id != "":
+@main.route('/data<id>', methods= ['GET', 'POST'])
+def datae(id):
+     id = request.args['id']
+     if id != '':
         dfd= pd.read_csv(session.get('gst'))
      gstin= dfd['Seller Gstin'].iloc[0]
      dfw= dfd[['Transaction Type', 'Ship To State','Order Id']]
