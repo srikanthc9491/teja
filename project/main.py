@@ -109,7 +109,7 @@ def upload_file():
 @main.route('/data', methods= ['GET', 'POST'])
 def datae():
      if request.method == "POST":
-            dfd= pd.read_csv(session.get('gst'))
+     dfd= pd.read_csv(session.get('gst'))
      gstin= dfd['Seller Gstin'].iloc[0]
      dfw= dfd[['Transaction Type', 'Ship To State','Order Id']]
      df= dfd[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross', 'Total Tax Amount']]
