@@ -1,15 +1,23 @@
 {% extends "welcome.html" %}
 
 {% block content %}
-<h1 class="title">
-  Welcome to Spoonfeed
-</h1>
-<h2>
-  CURRENTLY LOGGED IN AS:
-   {{ name }}!!
-   
-</h2>
 
+<img src="{{url_for('static', filename='latest-minion-facebook-dp-profile-picture.png')}}" alt="gst tax filing for amazon and ecommerce sellers" id="responsive-image" Width=100%>
+
+
+<h2>
+<div class="container p-4 my-3 bg-warning text-white">
+ 
+  <p><center>CURRENTLY LOGGED IN AS:</center> </p>
+    <h3><center>{{ name }}!!</center></h3>
+</div>
+  
+
+   
+  </h2>
+<h3>
+This is not a Social Networking Site to share profiles. So, we limited certain pages for limiting data from our users. 
+</h3>
 {% if current_user.is_authenticated %}
 <a href="{{ url_for('auth.logout') }}" class="button">
     Logout
