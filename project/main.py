@@ -41,9 +41,9 @@ def Resources():
     return render_template("Resources.html")
 
 
-@main.route('/Community_Forums', methods=['GET', 'POST'])
-def Community_Forums():
-    return render_template("Community_Forums.html")
+@main.route('/Contact_Us', methods=['GET', 'POST'])
+def Contact_Us():
+    return render_template("Contact_Us.html")
 
 
 
@@ -108,32 +108,34 @@ def upload_file():
 
 @main.route('/data', methods= ['GET', 'POST'])
 def datae():
-    dfd= pd.read_csv(session.get('gst'))
-    gstin= dfd['Seller Gstin'].iloc[0]
-    dfw= dfd[['Transaction Type', 'Ship To State','Order Id']]
-    df= dfd[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross', 'Total Tax Amount']]
-    df['percent']= (df['Total Tax Amount']*100)/df['Tax Exclusive Gross']
-    df['percent'].fillna(0)
-    df['percent'] = df['percent'].round(0)
-    df['percent']= df['percent'].fillna(0)
-    df['percent']= df['percent'].astype(int)
-    df['Total Tax Amount'] = df['Total Tax Amount'].astype('int64')
-    df = df.astype({"Transaction Type":'category'})
-    df1= df[(df['Transaction Type'] != 'Refund') & (df['Transaction Type'] != 'Cancel')]
-    Refund= df[(df['Transaction Type'] == 'Refund')]
-    dfw = dfw.astype({"Transaction Type":'category'})
-    Cancel= dfw[(dfw['Transaction Type'] == 'Cancel')]
-    dfa= df1.groupby(['Ship To State', 'percent']).agg({'Tax Exclusive Gross': ['sum']})
-    dfa_html= dfa.to_html()
-    Refund_html= Refund.to_html()
-    Cancel_html= Cancel.to_html()
+     if request.method == "POST":
+            
+          dfd= pd.read_csv(session.get('gst'))
+          gstin= dfd['Seller Gstin'].iloc[0]
+          dfw= dfd[['Transaction Type', 'Ship To State','Order Id']]
+          df= dfd[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross', 'Total Tax Amount']]
+          df['percent']= (df['Total Tax Amount']*100)/df['Tax Exclusive Gross']
+          df['percent'].fillna(0)
+          df['percent'] = df['percent'].round(0)
+          df['percent']= df['percent'].fillna(0)
+          df['percent']= df['percent'].astype(int)
+          df['Total Tax Amount'] = df['Total Tax Amount'].astype('int64')
+          df = df.astype({"Transaction Type":'category'})
+          df1= df[(df['Transaction Type'] != 'Refund') & (df['Transaction Type'] != 'Cancel')]
+          Refund= df[(df['Transaction Type'] == 'Refund')]
+          dfw = dfw.astype({"Transaction Type":'category'})
+          Cancel= dfw[(dfw['Transaction Type'] == 'Cancel')]
+          dfa= df1.groupby(['Ship To State', 'percent']).agg({'Tax Exclusive Gross': ['sum']})
+          dfa_html= dfa.to_html()
+          Refund_html= Refund.to_html()
+          Cancel_html= Cancel.to_html()
     
-    no_orders= df1['Transaction Type'].count()
-    no_refunds= Refund['Transaction Type'].count()
-    no_cancel= Cancel['Transaction Type'].count()
-    totalSale= df1.agg({'Tax Exclusive Gross': ['sum']})
-    totalTax= df1.agg({'Total Tax Amount': ['sum']})
-    return render_template("data.html", tables=[dfa_html, Refund_html, Cancel_html], titles = ['na', 'you have to file GSTR 1 for these states', 'Your Refunds', 'Your Cancelled Order Data'], gstin=gstin, no_orders=no_orders, totalTax=totalTax, no_refunds=no_refunds, no_cancel=no_cancel, totalSale=totalSale)
+          no_orders= df1['Transaction Type'].count()
+          no_refunds= Refund['Transaction Type'].count()
+          no_cancel= Cancel['Transaction Type'].count()
+          totalSale= df1.agg({'Tax Exclusive Gross': ['sum']})
+          totalTax= df1.agg({'Total Tax Amount': ['sum']})
+          return render_template("data.html", tables=[dfa_html, Refund_html, Cancel_html], titles = ['na', 'you have to file GSTR 1 for these states', 'Your Refunds', 'Your Cancelled Order Data'], gstin=gstin, no_orders=no_orders, totalTax=totalTax, no_refunds=no_refunds, no_cancel=no_cancel, totalSale=totalSale)
 
 
 
