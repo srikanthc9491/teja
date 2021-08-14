@@ -56,22 +56,22 @@ def Resources():
 def Contact_Us():
      form = ContactForm()
  
-  if request.method == 'POST':
-    if form.validate() == False:
-      flash('All fields are required.')
+    if request.method == 'POST':
+      if form.validate() == False:
+        flash('All fields are required.')
+        return render_template("Contact_Us.html", form=form)
+      else:
+        msg = Message(form.subject.data, sender='contact@example.com', recipients=['pavanteja14@gmail.com'])
+        msg.body = """
+        From: %s &lt;%s&gt;
+        %s
+        """ % (form.name.data, form.email.data, form.message.data)
+        mail.send(msg)
+ 
+        return render_template('contact.html', success=True)
+ 
+    elif request.method == 'GET':
       return render_template("Contact_Us.html", form=form)
-    else:
-      msg = Message(form.subject.data, sender='contact@example.com', recipients=['pavanteja14@gmail.com'])
-      msg.body = """
-      From: %s &lt;%s&gt;
-      %s
-      """ % (form.name.data, form.email.data, form.message.data)
-      mail.send(msg)
- 
-      return render_template('contact.html', success=True)
- 
-  elif request.method == 'GET':
-    return render_template("Contact_Us.html", form=form)
 
 
 
