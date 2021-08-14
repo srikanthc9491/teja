@@ -1,16 +1,27 @@
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for, Flask, session
+from flask import Blueprint, render_template, request, jsonify, redirect, url_for, Flask, session, flash
 from flask_login import login_required, current_user
 import pandas as pd
 import os.path
 import matplotlib.pyplot as plt
 import json
 import razorpay
+from forms import ContactForm
+from flask.ext.mail import Message, Mail
 main = Blueprint('main', __name__)
 
 
 razorpay_client = razorpay.Client(auth=("rzp_test_eTLJcDvEJdeU2G", "a2TS4HG8wpO84TuiPZHiG0CR"))
 from project.models import User
 from run import db
+
+app.config["MAIL_SERVER"] = "smtp.gmail.com"
+app.config["MAIL_PORT"] = 465
+app.config["MAIL_USE_SSL"] = True
+app.config["MAIL_USERNAME"] = 'pavanteja14@gmail.com'
+app.config["MAIL_PASSWORD"] = 'fuckme@10PM'
+ 
+mail.init_app(app)
+
 
     
 @main.route('/predata', methods= ['GET', 'POST'])
@@ -43,7 +54,24 @@ def Resources():
 
 @main.route('/Contact_Us', methods=['GET', 'POST'])
 def Contact_Us():
-    return render_template("Contact_Us.html")
+     form = ContactForm()
+ 
+  if request.method == 'POST':
+    if form.validate() == False:
+      flash('All fields are required.')
+      return render_template("Contact_Us.html", form=form)
+    else:
+      msg = Message(form.subject.data, sender='contact@example.com', recipients=['pavanteja14@gmail.com'])
+      msg.body = """
+      From: %s &lt;%s&gt;
+      %s
+      """ % (form.name.data, form.email.data, form.message.data)
+      mail.send(msg)
+ 
+      return render_template('contact.html', success=True)
+ 
+  elif request.method == 'GET':
+    return render_template("Contact_Us.html", form=form)
 
 
 
