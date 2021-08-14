@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, jsonify, redirect, url_for, Flask, session, flash
 from flask_login import login_required, current_user
 import pandas as pd
+from flask import app
 import os.path
 import matplotlib.pyplot as plt
 import json
@@ -12,7 +13,7 @@ main = Blueprint('main', __name__)
 
 razorpay_client = razorpay.Client(auth=("rzp_test_eTLJcDvEJdeU2G", "a2TS4HG8wpO84TuiPZHiG0CR"))
 from project.models import User
-from run import db, app
+from run import db
 
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 465
