@@ -54,7 +54,7 @@ def Resources():
 
 @main.route('/Contact_Us', methods=['GET', 'POST'])
 def Contact_Us():
-     form = ContactForm()
+    form = ContactForm()
     if request.method == 'POST':
       if form.validate() == False:
         flash('All fields are required.')
