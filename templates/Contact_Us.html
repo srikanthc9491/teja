@@ -1,25 +1,43 @@
 {% extends 'welcome.html' %}
-
+{% block hom %}
+{% endblock %}
+{% block home %}
+{% endblock %}
 
 {% block content %}
 <h1 class="title">
-  <h3>COMING SOON!</h3>
-
+ 
 </h1>
 
+<img src="{{url_for('static', filename='latest-minion-facebook-dp-profile-picture.png')}}" alt="gst tax filing for amazon and ecommerce sellers" id="responsive-image" Width=100%>
 
 
 
  
   {% if success %}
-    <p>Thank you for your message. We'll get back to you shortly.</p>
+
+
+
+<div class="container p-4 my-3 bg-success text-white">
+ 
+  
+    <h3><center>
+Thank you for your message. We'll get back to you shortly.
+</center></h3>
+</div>
+
+
+
+
+
+    <p></p>
  
   {% else %}
 
 
 <div class="container p-4 my-3 bg-warning text-white">
  
-  <p><center>Any queries|Suggestions|Complaints Please feel free to drop a message.</center> </p>
+  <p><center>Queries|Suggestions|Complaints <br>Please feel free to drop us a message.</center> </p>
     <h3><center>
  Send Us your message and we'll get back to you soon!
 </center></h3>
@@ -80,12 +98,8 @@
   
   
   
- <br>
-      </br>
-<br>
-</br>
 
-<div class="container p-4 my-3 bg-warning text-white">
+<div class="container  bg-warning text-white">
    <h3><center>
    
   {{ form.submit }}
