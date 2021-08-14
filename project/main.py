@@ -60,7 +60,7 @@ def Contact_Us():
         %s
         """ % (form.name.data, form.email.data, form.message.data)
         mail.send(msg)
-        return render_template('contact.html', success=True)
+        return render_template('Contact_Us.html', success=True)
     elif request.method == 'GET':
       return render_template("Contact_Us.html", form=form)
 
