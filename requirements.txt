@@ -33,3 +33,4 @@ Flask-GoogleCharts
 Matplotlib
 razorpay==0.2.0
 Flask-Charts
+flask-mail
