@@ -73,7 +73,7 @@ def profile():
    user= current_user
    if user:
                ### flash message to user.
-        flash('welcome back. We encourage you to Send feedback in contact us form!')
+        flash('welcome back. Please login(check remember me to have easy access!')
         return render_template('profile.html', name=current_user.name)
    else:
         flash('please signup to access everything! ')
