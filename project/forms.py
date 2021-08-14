@@ -1,6 +1,6 @@
 from flask_wtf import Form
 from wtforms import TextField, TextAreaField, SubmitField
-from wtforms.validators import Required, validators, ValidationError
+from wtforms import Required, validators, ValidationError
 class ContactForm(Form):
   name = TextField("Name",  [validators.Required("Please enter your name.")])
   email = TextField("Email",  [validators.Required("Please enter your email address."), validators.Email("Please enter your email address.")])
