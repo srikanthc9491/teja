@@ -2,12 +2,12 @@
 from flask import Flask, app
 from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_mail import Message, Mail
 db = SQLAlchemy()
 mail = Mail()
 
 from flask_login import LoginManager
-from flask_mail import Message, Mail
+
 
  
 def create_app():
