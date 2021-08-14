@@ -9,13 +9,14 @@
 
 
 
-<h2>Send Us your message and we'll get back to you soon!</h2>
+
  
   {% if success %}
     <p>Thank you for your message. We'll get back to you shortly.</p>
  
   {% else %}
- 
+ <h2>Send Us your message and we'll get back to you soon!</h2>
+
     {% for message in form.name.errors %}
       <div class="flash">{{ message }}</div>
     {% endfor %}
@@ -37,21 +38,25 @@
  
       {{ form.name.label }}
       {{ form.name }}
- 
+ <br></br>
       {{ form.email.label }}
       {{ form.email }}
- 
+ <br></br><br></br>
       {{ form.subject.label }}
       {{ form.subject }}
- 
+ <br></br>
+<br></br>
       {{ form.message.label }}
       {{ form.message }}
- 
-      {{ form.submit }}
+ <br>
+      </br>
+<br>
+</br>
+{{ form.submit }}
     </form>
 
 
-
+<br>
 
   {% endif %}
 
