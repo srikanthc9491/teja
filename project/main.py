@@ -70,14 +70,14 @@ def Contact_Us():
 @main.route('/profile/<name>')
 @login_required
 def profile(name):
-   name=current_user.name 
+   name= User.query.filter_by(name=name).first()
    user=User.query.filter_by(id=id).first()
    if user:
                ### flash message to user.
         flash('welcome back. We encourage you to Send feedback in contact us form!')
         return render_template('profile.html', name=current_user.name)
-   flash('Email address already exists')
-   return redirect(url_for('auth.login')) 
+   flash('please signup to access everything! ')
+   return redirect(url_for('auth.signup')) 
     
 
 
