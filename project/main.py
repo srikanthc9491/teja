@@ -13,15 +13,8 @@ main = Blueprint('main', __name__)
 
 razorpay_client = razorpay.Client(auth=("rzp_test_eTLJcDvEJdeU2G", "a2TS4HG8wpO84TuiPZHiG0CR"))
 from project.models import User
-from run import db
+from run import db, mail
 
-app.config["MAIL_SERVER"] = "smtp.gmail.com"
-app.config["MAIL_PORT"] = 465
-app.config["MAIL_USE_SSL"] = True
-app.config["MAIL_USERNAME"] = 'pavanteja14@gmail.com'
-app.config["MAIL_PASSWORD"] = 'fuckme@10PM'
- 
-mail.init_app(app)
 
 
     
