@@ -34,3 +34,4 @@ Matplotlib
 razorpay==0.2.0
 Flask-Charts
 flask-mail
+email_validator
