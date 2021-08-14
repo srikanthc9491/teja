@@ -15,7 +15,15 @@
     <p>Thank you for your message. We'll get back to you shortly.</p>
  
   {% else %}
- <h2>Send Us your message and we'll get back to you soon!</h2>
+
+
+<div class="container p-4 my-3 bg-warning text-white">
+ 
+  <p><center>Any queries|Suggestions|Complaints Please feel free to drop a message.</center> </p>
+    <h3><center>
+ Send Us your message and we'll get back to you soon!
+</center></h3>
+</div>
 
     {% for message in form.name.errors %}
       <div class="flash">{{ message }}</div>
@@ -36,24 +44,54 @@
     <form action="{{ url_for('main.Contact_Us') }}" method=post>
       {{ form.hidden_tag() }}
  
-      {{ form.name.label }}
+<center>      {{ form.name.label }}
       {{ form.name }}
+ </center> 
+  
+  
  <br></br>
-      {{ form.email.label }}
+
+
+
+<center>      {{ form.email.label }}
       {{ form.email }}
- <br></br><br></br>
-      {{ form.subject.label }}
-      {{ form.subject }}
+ </center> 
+  
+  
  <br></br>
-<br></br>
-      {{ form.message.label }}
+
+
+
+<center>      {{ form.subject.label }}
+      {{ form.subject }}
+  </center>
+  
+  
+  
+  
+ <br></br>
+
+
+
+
+<center>      {{ form.message.label }}
       {{ form.message }}
+  </center>
+  
+  
+  
  <br>
       </br>
 <br>
 </br>
-{{ form.submit }}
+
+<div class="container p-4 my-3 bg-warning text-white">
+   <h3><center>
+   
+  {{ form.submit }}
     </form>
+</center></h3>
+</div>
 
 
 <br>
