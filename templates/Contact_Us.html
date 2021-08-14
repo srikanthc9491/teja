@@ -32,7 +32,7 @@
       <div class="flash">{{ message }}</div>
     {% endfor %}
  
-    <form action="{{ url_for('Contact_Us') }}" method=post>
+    <form action="{{ url_for('main.Contact_Us') }}" method=post>
       {{ form.hidden_tag() }}
  
       {{ form.name.label }}
