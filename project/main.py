@@ -85,6 +85,7 @@ def profile():
 
 
 @main.route('/Home', methods=['GET'])
+@login_required
 def welcome_page():
     return render_template("welcome_page.html")
 
