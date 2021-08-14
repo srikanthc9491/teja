@@ -55,7 +55,6 @@ def Resources():
 @main.route('/Contact_Us', methods=['GET', 'POST'])
 def Contact_Us():
      form = ContactForm()
- 
     if request.method == 'POST':
       if form.validate() == False:
         flash('All fields are required.')
@@ -67,9 +66,7 @@ def Contact_Us():
         %s
         """ % (form.name.data, form.email.data, form.message.data)
         mail.send(msg)
- 
         return render_template('contact.html', success=True)
- 
     elif request.method == 'GET':
       return render_template("Contact_Us.html", form=form)
 
