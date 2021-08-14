@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import json
 import razorpay
 from project.forms import ContactForm
-from flask.ext.mail import Message, Mail
+from flask_mail import Message, Mail
 main = Blueprint('main', __name__)
 
 
