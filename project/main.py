@@ -70,7 +70,6 @@ def Contact_Us():
 @main.route('/profile', methods=['GET', 'POST'])
 @login_required
 def profile():
-   user=User.query.filter_by(id=id).first()
    if user:
                ### flash message to user.
         flash('welcome back. We encourage you to Send feedback in contact us form!')
