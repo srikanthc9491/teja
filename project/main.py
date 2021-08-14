@@ -67,10 +67,18 @@ def Contact_Us():
 
 
 
-@main.route('/profile')
+@main.route('/profile/<name>')
 @login_required
-def profile():
-    return render_template('profile.html', name=current_user.name)
+def profile(name):
+   name=current_user.name 
+   user=User.query.filter_by(id=id).first()
+   if user:
+               ### flash message to user.
+        flash('welcome back. We encourage you to Send feedback in contact us form!')
+        return render_template('profile.html', name=current_user.name)
+   flash('Email address already exists')
+   return redirect(url_for('auth.login')) 
+    
 
 
 
