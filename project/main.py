@@ -14,13 +14,13 @@ razorpay_client = razorpay.Client(auth=("rzp_test_eTLJcDvEJdeU2G", "a2TS4HG8wpO8
 from project.models import User
 from run import db, create_app
 
-app.config["MAIL_SERVER"] = "smtp.gmail.com"
-app.config["MAIL_PORT"] = 465
-app.config["MAIL_USE_SSL"] = True
-app.config["MAIL_USERNAME"] = 'pavanteja14@gmail.com'
-app.config["MAIL_PASSWORD"] = 'fuckme@10PM'
+create_app.config["MAIL_SERVER"] = "smtp.gmail.com"
+create_app.config["MAIL_PORT"] = 465
+create_app.config["MAIL_USE_SSL"] = True
+create_app.config["MAIL_USERNAME"] = 'pavanteja14@gmail.com'
+create_app.config["MAIL_PASSWORD"] = 'fuckme@10PM'
  
-mail.init_app(app)
+mail.init_app(create_app())
 
 
     
