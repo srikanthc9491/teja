@@ -1,8 +1,26 @@
 {% extends "welcome.html" %}
 
 {% block content %}
+
+<img src="{{url_for('static', filename='latest-minion-facebook-dp-profile-picture.png')}}" alt="gst tax filing for amazon and ecommerce sellers" id="responsive-image" Width=100%>
+
+
+
+<div class="container p-4 my-3 bg-warning text-white">
+ 
+    <h3><center>please login!!</center></h3>
+</div>
+
+
+
+<div class="container p-4 my-3 bg-warning text-white">
+ 
+    
+<br>
+
+
 <div class="column is-4 is-offset-4">
-    <h3 class="title">Login</h3>
+    
     <div class="box">
         <form method="POST" action="/login">
             <div class="field">
@@ -26,7 +44,7 @@
         </form>
     </div>
 </div>
-
+</div> 
 {% with messages = get_flashed_messages() %}
 {% if messages %}
     <div class="notification is-danger">
@@ -34,7 +52,11 @@
     </div>
 {% endif %}
 {% endwith %}
-<form method="POST" action="/login">
+<div class="container p-4 my-3 bg-warning text-white">
+ 
+    
 
+<form method="POST" action="/login">
+</div>
 
 {% endblock %}
