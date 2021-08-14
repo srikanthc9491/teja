@@ -67,17 +67,17 @@ def Contact_Us():
 
 
 
-@main.route('/profile/<name>')
+@main.route('/profile', methods=['GET', 'POST'])
 @login_required
-def profile(name):
-   name= User.query.filter_by(name=name).first()
+def profile():
    user=User.query.filter_by(id=id).first()
    if user:
                ### flash message to user.
         flash('welcome back. We encourage you to Send feedback in contact us form!')
         return render_template('profile.html', name=current_user.name)
-   flash('please signup to access everything! ')
-   return redirect(url_for('auth.signup')) 
+   else:
+        flash('please signup to access everything! ')
+        return redirect(url_for('auth.signup')) 
     
 
 
