@@ -4,15 +4,23 @@ from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
+mail = Mail()
 
 from flask_login import LoginManager
+from flask_mail import Message, Mail
 
-
+ 
 def create_app():
     app = Flask(__name__)
 
     app.config['SECRET_KEY'] = 'startup@09PM'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://mukizbizrmqrsm:b2be1e570f5e7b23e724df2ef4027bc60668b348172091616df3b4b37e742d65@ec2-3-213-146-52.compute-1.amazonaws.com:5432/d3kadk0ovqgq0j'
+    app.config["MAIL_SERVER"] = "smtp.gmail.com"
+    app.config["MAIL_PORT"] = 465
+    app.config["MAIL_USE_SSL"] = True
+    app.config["MAIL_USERNAME"] = 'pavanteja14@gmail.com'
+    app.config["MAIL_PASSWORD"] = 'fuckme@10PM'
+    mail.init_app(app)
 
 # init SQLAlchemy so we can use it later in our models
     
