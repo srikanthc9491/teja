@@ -141,6 +141,10 @@ def datae():
         dfd= pd.read_csv(session.get('gst'))
      gstin= dfd['Seller Gstin'].iloc[0]
      dfw= dfd[['Transaction Type', 'Ship To State','Order Id']]
+     sales= dfd[['Transaction Type', 'Ship To State','Order Id', 'Tax Exclusive Gross', 'Total Tax Amount']]
+     sales= sales.astype({"Transaction Type":'category'})
+     sales= sales[(sales['Transaction Type'] != 'Refund') & (df['Transaction Type'] != 'Cancel')]
+     sale= sales[['Ship To State','Order Id', 'Tax Exclusive Gross', 'Total Tax Amount']]
      df= dfd[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross', 'Total Tax Amount']]
      df['percent']= (df['Total Tax Amount']*100)/df['Tax Exclusive Gross']
      df['percent'].fillna(0)
@@ -155,6 +159,7 @@ def datae():
      Cancel= dfw[(dfw['Transaction Type'] == 'Cancel')]
      dfa= df1.groupby(['Ship To State', 'percent']).agg({'Tax Exclusive Gross': ['sum']})
      dfa_html= dfa.to_html()
+     sale_html= sale.to_html()
      Refund_html= Refund.to_html()
      Cancel_html= Cancel.to_html()
      no_orders= df1['Transaction Type'].count()
@@ -162,7 +167,7 @@ def datae():
      no_cancel= Cancel['Transaction Type'].count()
      totalSale= df1.agg({'Tax Exclusive Gross': ['sum']})
      totalTax= df1.agg({'Total Tax Amount': ['sum']})
-     return render_template("data.html", tables=[dfa_html, Refund_html, Cancel_html], titles = ['na', 'you have to file GSTR 1 for these states', 'Your Refunds', 'Your Cancelled Order Data'], gstin=gstin, no_orders=no_orders, totalTax=totalTax, no_refunds=no_refunds, no_cancel=no_cancel, totalSale=totalSale)
+     return render_template("data.html", tables=[dfa_html, sale_html, Refund_html, Cancel_html], titles = ['na', 'you have to file GSTR 1 for these states', 'Your successful orders', 'Your Refunds', 'Your Cancelled Order Data'], gstin=gstin, no_orders=no_orders, totalTax=totalTax, no_refunds=no_refunds, no_cancel=no_cancel, totalSale=totalSale)
 
 
 
