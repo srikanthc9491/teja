@@ -92,7 +92,7 @@ division {
       <li class="nav-item">
         {% if current_user.is_authenticated %}
                         <a class="nav-link"  href="{{ url_for('main.index') }}">
-                            Home
+                             Home 
                         </a>
                         {% endif %} 
       </li>
@@ -103,7 +103,7 @@ division {
       <li class="nav-item">
      {% if current_user.is_authenticated %}
                         <a class="nav-link" href="{{ url_for('main.profile') }}">
-                            Profile
+                             Profile 
                         </a>
                         {% endif %}   
       </li>
@@ -113,7 +113,7 @@ division {
       <li class="nav-item">
         {% if not current_user.is_authenticated %}
                         <a class="nav-link" href="{{ url_for('auth.login') }}">
-                            Login
+                             Login 
 
                         </a>
                         {% endif %} 
@@ -122,7 +122,7 @@ division {
 <li class="nav-item">
 {% if not current_user.is_authenticated %}
                         <a href="{{ url_for('auth.signup') }}" class="topnav-right">
-                            Sign Up
+                             Register 
                         </a>
                         {% endif %}
 </li>
@@ -131,7 +131,7 @@ division {
 
   {% if current_user.is_authenticated %}
                         <a href="{{ url_for('auth.logout') }}" class="topnav-right">
-                            Logout
+                             Logout 
                         </a>
 {% endif %}
 </li>
@@ -140,7 +140,7 @@ division {
     </li>
                  <br>         
 <li class="nav-item">
-      <a class="nav-item" href="Contact_Us">Contact_Us</a>
+      <a class="nav-item" href="Contact_Us"> Contact_Us </a>
     </li>
   
     </ul>
