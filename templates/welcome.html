@@ -35,8 +35,8 @@
 <head>
 <style> 
 division {
-  width: 178px;
-  height: 22px;
+  width: 180px;
+  height: 20px;
   background-color: red;
   position: relative;
   animation: myfirst 5s linear 2s infinite alternate;
@@ -72,43 +72,43 @@ division {
 
                 <div id="navbarMenuHeroA" class="topnav-right">
                  
-                    <div class="navbar-menu" > 
+                    <div class="topnav-right">" > 
                       {% if current_user.is_authenticated %}
-                        <a href="{{ url_for('main.index') }}" class="navbar-right">
+                        <a href="{{ url_for('main.index') }}" class="topnav-right">
                             Home
                         </a>
                         {% endif %}
 
                         {% if current_user.is_authenticated %}
-                        <a href="{{ url_for('main.profile') }}" class="navbar-right">
+                        <a href="{{ url_for('main.profile') }}" class="topnav-right">
                             Profile
                         </a>
                         {% endif %}
 
                         {% if not current_user.is_authenticated %}
-                        <a href="{{ url_for('auth.login') }}" class="navbar-right">
+                        <a href="{{ url_for('auth.login') }}" class="topnav-right">
                             Login
 
                         </a>
                         {% endif %}
 
                         {% if not current_user.is_authenticated %}
-                        <a href="{{ url_for('auth.signup') }}" class="navbar-item">
+                        <a href="{{ url_for('auth.signup') }}" class="topnav-right">
                             Sign Up
                         </a>
                         {% endif %}
 
                         {% if current_user.is_authenticated %}
-                        <a href="{{ url_for('auth.logout') }}" class="navbar-item">
+                        <a href="{{ url_for('auth.logout') }}" class="topnav-right">
                             Logout
                         </a>
 
 
-<ul class="navbar-menu">
-    <li class="navbar-menu">
+<ul class="topnav-right">
+    <li class="topnav-right">
       <a class="nav-right" href="Resources">Resources</a>
     </li>
-    <li class="navbar-menu">
+    <li class="topnav-right">
       <a class="nav-right" href="Contact_Us">Contact_Us</a>
     </li>
 
