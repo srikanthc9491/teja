@@ -61,14 +61,7 @@ division {
 </body>
 
 
-    <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="Resources">Resources</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="Contact_Us">Contact_Us</a>
-    </li>
-
+    
 
 
 
@@ -109,6 +102,18 @@ division {
                         <a href="{{ url_for('auth.logout') }}" class="navbar-item">
                             Logout
                         </a>
+
+
+<ul class="navbar-menu">
+    <li class="nav-menu">
+      <a class="nav-right" href="Resources">Resources</a>
+    </li>
+    <li class="nav-menu">
+      <a class="nav-right" href="Contact_Us">Contact_Us</a>
+    </li>
+
+
+
                         {% endif %}
 
                     </div>
