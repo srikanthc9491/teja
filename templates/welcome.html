@@ -31,7 +31,7 @@
 </div>
 
 
-<nav class="navbar navbar-expand-md bg-secondary navbar-dark sticky-top">
+<nav class="navbar navbar-expand-md bg-light navbar-dark sticky-top">
   
 
 <head>
@@ -72,13 +72,38 @@ division {
 
 
 
+<style> 
+division {
+  width: 180px;
+  height: 20px;
+  background-color: red;
+  position: relative;
+  animation: myfirst 5s linear 2s infinite alternate;
+}
 
+@keyframes myfirst {
+  0%   {background-color:light; left:-80px; top:0px;}
+  25%  {background-color:orange; left:83px; top:0px;}
+  50%  {background-color:orange; left:83px; top:00px;}
+  75%  {background-color:light; left:-80px; top:00px;}
+  100% {background-color:light; left:-80px; top:0px;}
+}
+</style>
+</head>
+<body>
 
-
-
-  <button class="navbar-toggler bg-warning" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+<division>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
+
+ </division>
+
+</body>
+
+
+
+  
 
 
 
