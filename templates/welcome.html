@@ -31,8 +31,36 @@
 </div>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-  <a class="navbar-brand" href="Home">Spoonfeed my Data</a>
-  <ul class="navbar-nav">
+
+<head>
+<style> 
+div {
+  width: 100px;
+  height: 30px;
+  background-color: red;
+  position: relative;
+  animation: myfirst 5s linear 2s infinite alternate;
+}
+
+@keyframes myfirst {
+  0%   {background-color:red; left:0px; top:0px;}
+  25%  {background-color:yellow; left:200px; top:0px;}
+  50%  {background-color:blue; left:200px; top:00px;}
+  75%  {background-color:green; left:0px; top:00px;}
+  100% {background-color:red; left:0px; top:0px;}
+}
+</style>
+</head>
+<body>
+
+
+<div><a class="navbar-brand" href="Home">Spoonfeed my Data</a>
+ </div>
+
+</body>
+
+
+    <ul class="navbar-nav">
     <li class="nav-item">
       <a class="nav-link" href="Resources">Resources</a>
     </li>
