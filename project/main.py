@@ -120,7 +120,7 @@ def upload_file():
     dfa= df1.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
     dfa= dfa.dropna
     print(dfb)
-    gstin= data['Seller Gstin'].iloc[0]
+    gstin= data['Seller Gstin'].iloc[0] 
     no_orders= df1['Transaction Type'].count()
     no_refunds= Refund['Transaction Type'].count()
     no_cancel= Cancel['Transaction Type'].count()
@@ -140,6 +140,7 @@ def datae():
      if payment_id != '':
         dfd= pd.read_csv(session.get('gst'))
      gstin= dfd['Seller Gstin'].iloc[0]
+     add= dfd['Ship To State'] 
      dfw= dfd[['Transaction Type', 'Ship To State','Order Id']]
      sales= dfd[['Transaction Type', 'Ship To State','Order Id', 'Tax Exclusive Gross', 'Total Tax Amount']]
      sales= sales.astype({"Transaction Type":'category'})
@@ -167,7 +168,7 @@ def datae():
      no_cancel= Cancel['Transaction Type'].count()
      totalSale= df1.agg({'Tax Exclusive Gross': ['sum']})
      totalTax= df1.agg({'Total Tax Amount': ['sum']})
-     return render_template("data.html", tables=[dfa_html, sale_html, Refund_html, Cancel_html], titles = ['na', 'you have to file GSTR 1 for these states', 'Your successful orders', 'Your Refunds', 'Your Cancelled Order Data'], gstin=gstin, no_orders=no_orders, totalTax=totalTax, no_refunds=no_refunds, no_cancel=no_cancel, totalSale=totalSale)
+     return render_template("data.html", tables=[dfa_html, sale_html, Refund_html, Cancel_html], titles = ['na', 'you have to file GSTR 1 for these states', 'Your successful orders', 'Your Refunds', 'Your Cancelled Order Data'], gstin=gstin, no_orders=no_orders, totalTax=totalTax, no_refunds=no_refunds, no_cancel=no_cancel, add=add, totalSale=totalSale)
 
 
 
