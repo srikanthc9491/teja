@@ -44,7 +44,7 @@
     
 <body>
 <select name="add" method="GET" action="/data">
-{% for 'state' in add["Ship To State"] %}
+{% for state in add["Ship To State"] %}
         <option value="{{ state }}">{{ state }}</option>
     {% endfor %}
 </select>
