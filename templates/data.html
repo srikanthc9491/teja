@@ -25,15 +25,33 @@
     		<div 
 	 class="card-body">
 	    <h2> 
-		    Did you sell products through market place other than amazon? (including physical sales) 
+		    Did you sell products through market place other than amazon for the month? (including physical sales) 
 	    </h2>
 		</div>
 		
  	 </div
   <br>
 		  <br>
-	<a href="#dive" class="btn btn-primary">NO! I sell my products only in amazon. </a>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#statesdata">
+    <span class="navbar-toggler-icon">YES, Add My other sales.</span>
+  </button>
+<br>	<a href="#dive" class="btn btn-primary">NO!</a>
 <br>
+
+
+<div class="collapse navbar-collapse" id="statesdata">
+    
+<body>
+<select name="add" method="GET" action="/data">
+{% for 'state' in add["Ship To State"] %}
+        <option value="{{ state }}">{{ state }}</option>
+    {% endfor %}
+</select>
+</body>
+
+
+</div>
 <div class="container-fluid"><br>
   
     <div class="row">
