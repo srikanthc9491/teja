@@ -140,8 +140,16 @@
         var data = google.visualization.arrayToDataTable([
 			{% for item in data.values(): %} 
 
-                                {% for i, j in range(item) %}
-					['{{ i }}', {{ j }}],
+                                {% for i in range(item) %}
+					['{{ i }}'],
+				
+				{% endfor %}
+                                         {% for i in range(item) %}
+					['{{ i }}'],
+				
+				{% endfor %}
+                       {% for j in range(item) %}
+					[{{ j }}],
 				
 				{% endfor %}
               
