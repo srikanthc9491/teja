@@ -138,7 +138,7 @@
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-			{% for i, j in data.iterrows(): %} 
+			{% for i, j in data.items(): %} 
 
                                 {% if value is string %}
 					['{{ i }}', '{{ j }}'],
