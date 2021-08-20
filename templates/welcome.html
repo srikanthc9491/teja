@@ -295,10 +295,10 @@ body {
 #myBtn {
   display: none;
   position: fixed;
-  bottom: 20px;
+  bottom: 30px;
   right: 30px;
   z-index: 99;
-  font-size: 18px;
+  font-size:23px;
   border: none;
   outline: none;
   background-color: orange;
@@ -333,7 +333,7 @@ var mybutton = document.getElementById("myBtn");
 // When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
     mybutton.style.display = "block";
   } else {
     mybutton.style.display = "none";
