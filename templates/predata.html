@@ -138,13 +138,11 @@
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-			 {% for key, value in data.items() %}
-                                {% if value is string %}
-					['{{ key }}', '{{ value }}'],
-				{% else %}
-					['{{ key }}', {{ value }}],
-				{% endif %}
-              {% endfor %}
+			{% for i, j in data.iterrows(): %} 
+
+                         {% return(i, j) %}
+
+                        {% return() %}
         ]);
 
         var options = {
