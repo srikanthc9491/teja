@@ -139,10 +139,14 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
 			{% for i, j in data.iterrows(): %} 
-{% endfor %} 
-                         {% return(i, j) %}
-                         
-                        {% return() %}
+
+                                {% if value is string %}
+					['{{ i }}', '{{ j }}'],
+				{% else %}
+					['{{ i }}', {{ j }}],
+				{% endif %}
+              
+                        {% endfor %}
                          
         ]);
 
