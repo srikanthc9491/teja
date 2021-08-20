@@ -139,9 +139,9 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
 			{% for i, j in data.iterrows(): %} 
-
+{% endfor %} 
                          {% return(i, j) %}
-                         {% endfor %} 
+                         
                         {% return() %}
                          
         ]);
