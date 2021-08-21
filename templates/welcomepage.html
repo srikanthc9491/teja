@@ -1,51 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>SpoonfeedTAX</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{% extends "welcome.html" %}
+{% block mom %} {% endblock %}
+{% block hom %} {% endblock %}
+{% block home %} {% endblock %} 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
-<body style="height:1500px">
-
-<div class="container-fluid">
-  <br>
-  <h3>SpoonfeedTAX</h3>
-{% block hom %}
-  <p>For Amazon.in Sellers  -- File GST Returns Easily in Simple Steps Using Our AI Calculated Data </p>{% endblock %}
-  <p>We dont save your Data <strong>Note:</strong> This Module is under Development Process!</p>
-</div>
-
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-  <a class="navbar-brand" href="Home">spoonfeed my data</a>
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="Resources">Resources</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="Contact_Us">Contact_Us</a>
-    </li>
-  </ul>
-</nav>
-<img src="{{url_for('static', filename='pic.jpg')}}" alt="gst tax filing for amazon and ecommerce sellers" id="responsive-image">
-<div class="container-fluid"><br>
-  
-    <div class="row">
-        <div class="col-md-12 text-center">{% block mono %}
-<div class="container p-4 my-3 bg-info text-white">
-            <h1>Welcome to Spoon Feed TAX.</h1></div>{% endblock %}
-      {% block home %}      <h3>Let's get Paying GST.</h3>{% endblock %}
-            <h3>Simple Steps to file your GST. </h3>
-            </div>
-    </div>
-</div>
-</div>
 
 {% block content %}
-
+<h3><center> NEXT STEPS TO FILE YOUR GSTR </center> </h3>
 <div class="card">
     <div class="card-body">Log in to your GSTR portal and Go to File Returns.</div>
   </div>
@@ -60,7 +22,7 @@
 
   <br>
     <div class="card bg-success text-white">
-    <div class="card-body">Click Save after entering details and repeat the steps for every state</div>
+    <div class="card-body">Click Save after entering generated details</div>
   </div>
  
   <br>
@@ -71,39 +33,13 @@
   </div>
   <br>
     <br>
+
+<div class="card bg-warning text-white">
+    <div class="card-body">Check your credit bills with those in the GST portal.</div>
+  </div>
+  <br>
     <br>
 
 {% endblock %}
     
 
-</body>
-<!-- Footer style -->
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<style>
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: black;
-  color: white;
-  text-align: center;
-}
-</style>
-
-<div class="card">
-    <div class="card-body">Made this to help my MOM file her amazon gst returns. </div>
-  </div>
-  <br>
-
-  <!-- Copyright -->
-  <div class="footer">© 2021 Copyright:
-    <a href="https://spoonfeedtax.herokuapp.com/"> spoonfeedTAX</a>
-  </div>
-  <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
-</html>
