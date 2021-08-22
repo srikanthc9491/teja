@@ -133,40 +133,40 @@ def upload_file():
     dfc= df1.groupby(['Ship To State']).agg({'Total Tax Amount': ['sum']})
     data= states
     return render_template("predata.html", tables=[statestable.to_html(classes='data', header=False)], titles = ['na', 'you have to file GSTR 1 for these states'], gstin=gstin, no_orders=no_orders, totalTax=totalTax, data=data, no_refunds=no_refunds, no_cancel=no_cancel, totalSale=totalSale) 
-
 @main.route('/data', methods= ['GET', 'POST'])
 def datae():
-     if request.method == "POST":
+     payment_id = request.args['payment_id']
+     if payment_id == 'payment_id':
         dfd= pd.read_csv(session.get('gst'))
-        gstin= dfd['Seller Gstin'].iloc[0]
-        add= dfd['Ship To State'] 
-        dfw= dfd[['Transaction Type', 'Ship To State','Order Id']]
-        sales= dfd[['Transaction Type', 'Ship To State','Order Id', 'Tax Exclusive Gross', 'Total Tax Amount']]
-        sales= sales.astype({"Transaction Type":'category'})
-        sales= sales[(sales['Transaction Type'] != 'Refund') & (sales['Transaction Type'] != 'Cancel')]
-        sale= sales[['Ship To State','Order Id', 'Tax Exclusive Gross', 'Total Tax Amount']]
-        df= dfd[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross', 'Total Tax Amount']]
-        df['percent']= (df['Total Tax Amount']*100)/df['Tax Exclusive Gross']
-        df['percent'].fillna(0)
-        df['percent'] = df['percent'].round(0)
-        df['percent']= df['percent'].fillna(0)
-        df['percent']= df['percent'].astype(int)
-        df['Total Tax Amount'] = df['Total Tax Amount'].astype('int64')
-        df = df.astype({"Transaction Type":'category'})
-        df1= df[(df['Transaction Type'] != 'Refund') & (df['Transaction Type'] != 'Cancel')]
-        Refund= df[(df['Transaction Type'] == 'Refund')]
-        dfw = dfw.astype({"Transaction Type":'category'})
-        Cancel= dfw[(dfw['Transaction Type'] == 'Cancel')]
-        dfa= df1.groupby(['Ship To State', 'percent']).agg({'Tax Exclusive Gross': ['sum']})
-        dfa_html= dfa.to_html()
-        sale_html= sale.to_html()
-        Refund_html= Refund.to_html()
-        Cancel_html= Cancel.to_html()
-        no_orders= df1['Transaction Type'].count()
-        no_refunds= Refund['Transaction Type'].count()
-        no_cancel= Cancel['Transaction Type'].count()
-        totalSale= df1.agg({'Tax Exclusive Gross': ['sum']})
-        totalTax= df1.agg({'Total Tax Amount': ['sum']})
+     gstin= dfd['Seller Gstin'].iloc[0]
+     add= dfd['Ship To State'] 
+     dfw= dfd[['Transaction Type', 'Ship To State','Order Id']]
+     sales= dfd[['Transaction Type', 'Ship To State','Order Id', 'Tax Exclusive Gross', 'Total Tax Amount']]
+     sales= sales.astype({"Transaction Type":'category'})
+     sales= sales[(sales['Transaction Type'] != 'Refund') & (sales['Transaction Type'] != 'Cancel')]
+     sale= sales[['Ship To State','Order Id', 'Tax Exclusive Gross', 'Total Tax Amount']]
+     df= dfd[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross', 'Total Tax Amount']]
+     df['percent']= (df['Total Tax Amount']*100)/df['Tax Exclusive Gross']
+     df['percent'].fillna(0)
+     df['percent'] = df['percent'].round(0)
+     df['percent']= df['percent'].fillna(0)
+     df['percent']= df['percent'].astype(int)
+     df['Total Tax Amount'] = df['Total Tax Amount'].astype('int64')
+     df = df.astype({"Transaction Type":'category'})
+     df1= df[(df['Transaction Type'] != 'Refund') & (df['Transaction Type'] != 'Cancel')]
+     Refund= df[(df['Transaction Type'] == 'Refund')]
+     dfw = dfw.astype({"Transaction Type":'category'})
+     Cancel= dfw[(dfw['Transaction Type'] == 'Cancel')]
+     dfa= df1.groupby(['Ship To State', 'percent']).agg({'Tax Exclusive Gross': ['sum']})
+     dfa_html= dfa.to_html()
+     sale_html= sale.to_html()
+     Refund_html= Refund.to_html()
+     Cancel_html= Cancel.to_html()
+     no_orders= df1['Transaction Type'].count()
+     no_refunds= Refund['Transaction Type'].count()
+     no_cancel= Cancel['Transaction Type'].count()
+     totalSale= df1.agg({'Tax Exclusive Gross': ['sum']})
+     totalTax= df1.agg({'Total Tax Amount': ['sum']})
      return render_template("data.html", tables=[dfa_html, sale_html, Refund_html, Cancel_html], titles = ['na', 'you have to file GSTR 1 for these states', 'Your successful orders', 'Your Refunds', 'Your Cancelled Order Data'], gstin=gstin, no_orders=no_orders, totalTax=totalTax, no_refunds=no_refunds, no_cancel=no_cancel, add=add, totalSale=totalSale)
 
 
