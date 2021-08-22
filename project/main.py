@@ -167,7 +167,7 @@ def datae():
         no_cancel= Cancel['Transaction Type'].count()
         totalSale= df1.agg({'Tax Exclusive Gross': ['sum']})
         totalTax= df1.agg({'Total Tax Amount': ['sum']})
-        return render_template("data.html", tables=[dfa_html, sale_html, Refund_html, Cancel_html], titles = ['na', 'you have to file GSTR 1 for these states', 'Your successful orders', 'Your Refunds', 'Your Cancelled Order Data'], gstin=gstin, no_orders=no_orders, totalTax=totalTax, no_refunds=no_refunds, no_cancel=no_cancel, add=add, totalSale=totalSale)
+     return render_template("data.html", tables=[dfa_html, sale_html, Refund_html, Cancel_html], titles = ['na', 'you have to file GSTR 1 for these states', 'Your successful orders', 'Your Refunds', 'Your Cancelled Order Data'], gstin=gstin, no_orders=no_orders, totalTax=totalTax, no_refunds=no_refunds, no_cancel=no_cancel, add=add, totalSale=totalSale)
 
 
 
