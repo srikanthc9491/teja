@@ -136,8 +136,7 @@ def upload_file():
 
 @main.route('/data', methods= ['GET', 'POST'])
 def datae():
-     payment_id = request.args['payment_id']
-     if payment_id != '':
+     if request.method == "POST":
         dfd= pd.read_csv(session.get('gst'))
      gstin= dfd['Seller Gstin'].iloc[0]
      add= dfd['Ship To State'] 
