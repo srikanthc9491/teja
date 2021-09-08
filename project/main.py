@@ -99,7 +99,7 @@ def upload_file():
         li = []
         for f in request.files.getlist('file'):
             f.save(f.filename)
-            dframe = pd.read_csv(f)
+            dframe = pd.read_csv(f.filename)
             li.append(dframe)
             
     frame = pd.concat(li, axis=0, ignore_index=True)
@@ -107,7 +107,7 @@ def upload_file():
     ##if uploaded_file.filename != '':
     ##    uploaded_file.save(uploaded_file.filename)
         ## read the csv_file
-    session["gst"] = frame 
+   ########## session["gst"] = frame 
   ##  data = pd.read_csv(uploaded_file.filename)
   # # session["gst"] = data
     df= frame[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross','Total Tax Amount']]
