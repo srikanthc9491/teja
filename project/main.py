@@ -107,7 +107,7 @@ def upload_file():
     ##if uploaded_file.filename != '':
     ##    uploaded_file.save(uploaded_file.filename)
         ## read the csv_file
-   ########## session["gst"] = frame 
+    session["gst"] = frame 
   ##  data = pd.read_csv(uploaded_file.filename)
   # # session["gst"] = data
     df= frame[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross','Total Tax Amount']]
