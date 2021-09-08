@@ -97,7 +97,6 @@ class ModelEncoder( JSONEncoder ) :
         return json.JSONEncoder.default( self , obj )
 
 class Model( JSONEncoder ) :
-    ....
     def to_json( self ) :
         """
         to_json transforms the Model instance into a JSON string
