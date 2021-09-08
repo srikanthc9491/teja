@@ -4,7 +4,7 @@ import pandas as pd
 from flask import app
 import os.path
 import matplotlib.pyplot as plt
-import json
+import json, JSONEncoder
 import razorpay
 from project.forms import ContactForm
 from flask_mail import Message, Mail
