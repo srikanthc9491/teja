@@ -5,6 +5,7 @@ from flask import app
 import os.path
 import matplotlib.pyplot as plt
 import json
+import jsonpickle
 from json import JSONEncoder
 import razorpay
 from project.forms import ContactForm
