@@ -89,6 +89,21 @@ def profile():
 def welcome_page():
     return render_template("welcome_page.html")
 
+class ModelEncoder( JSONEncoder ) :
+    def default( self , obj ) :
+        if isinstance( obj , Model ):
+            return obj.to_json()
+        # Let the base class default method raise the TypeError
+        return json.JSONEncoder.default( self , obj )
+
+class Model( JSONEncoder ) :
+    ....
+    def to_json( self ) :
+        """
+        to_json transforms the Model instance into a JSON string
+        """
+        return jsonpickle.encode( self )
+
 
 
 
@@ -107,7 +122,7 @@ def upload_file():
     ##if uploaded_file.filename != '':
     ##    uploaded_file.save(uploaded_file.filename)
         ## read the csv_file
-    session["gst"] = frame 
+    session["model"] = ModelEncoder().encode( Model(frame))
   ##  data = pd.read_csv(uploaded_file.filename)
   # # session["gst"] = data
     df= frame[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross','Total Tax Amount']]
