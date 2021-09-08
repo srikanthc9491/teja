@@ -99,7 +99,7 @@ def upload_file():
         li = []
         for f in request.files.getlist('file'):
             f.save(f.filename)
-            dframe = pd.read_csv(f.filename)
+            dframe = pd.read_csv(f)
             li.append(dframe)
             
     frame = pd.concat(li, axis=0, ignore_index=True)
