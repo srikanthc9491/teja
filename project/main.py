@@ -95,14 +95,22 @@ def welcome_page():
 @main.route('/Home', methods=['GET', 'POST'])
 @login_required
 def upload_file():
-    uploaded_file = request.files['file']
-    if uploaded_file.filename != '':
-        uploaded_file.save(uploaded_file.filename)
+    if request.method == 'POST' and 'file' in request.files:
+        li = []
+        for f in request.files.getlist('file'):
+            f.save(f.filename)
+            dframe = pd.read_csv(f.filename)
+            li.append(dframe)
+            
+    frame = pd.concat(li, axis=0, ignore_index=True)
+    ##uploaded_file = request.files['file']
+    ##if uploaded_file.filename != '':
+    ##    uploaded_file.save(uploaded_file.filename)
         ## read the csv_file
-    session["gst"] = uploaded_file.filename 
-    data = pd.read_csv(uploaded_file.filename)
-   # session["gst"] = data
-    df= data[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross','Total Tax Amount']]
+    session["gst"] = frame 
+  ##  data = pd.read_csv(uploaded_file.filename)
+  # # session["gst"] = data
+    df= frame[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross','Total Tax Amount']]
     df['percent']= (df['Total Tax Amount']*100)/df['Tax Exclusive Gross']
     df['percent'] = df['percent'].round(0)
     df['percent']= df['percent'].fillna(0)
@@ -111,7 +119,7 @@ def upload_file():
     df = df.astype({"Transaction Type":'category'})
     df1= df[(df['Transaction Type'] != 'Refund') & (df['Transaction Type'] != 'Cancel')]
     Refund= df[(df['Transaction Type'] == 'Refund')]
-    Cancel= data[['Order Id', 'Transaction Type', 'Ship To State', 'Total Tax Amount']]
+    Cancel= frame[['Order Id', 'Transaction Type', 'Ship To State', 'Total Tax Amount']]
     Cancel = Cancel.astype({"Transaction Type":'category'})
     Cancel= Cancel[(Cancel['Transaction Type'] == 'Cancel')]
     dfb= Refund.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
@@ -120,7 +128,7 @@ def upload_file():
     dfa= df1.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
     dfa= dfa.dropna
     print(dfb)
-    gstin= data['Seller Gstin'].iloc[0] 
+    gstin= frame['Seller Gstin'].iloc[0] 
     no_orders= df1['Transaction Type'].count()
     no_refunds= Refund['Transaction Type'].count()
     no_cancel= Cancel['Transaction Type'].count()
