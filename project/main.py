@@ -5,8 +5,6 @@ from flask import app
 import os.path
 import matplotlib.pyplot as plt
 import json
-import jsonpickle
-from json import JSONEncoder
 import razorpay
 from project.forms import ContactForm
 from flask_mail import Message, Mail
@@ -91,42 +89,20 @@ def profile():
 def welcome_page():
     return render_template("welcome_page.html")
 
-class ModelEncoder( JSONEncoder ) :
-    def default( self , obj ) :
-        if isinstance( obj , Model ):
-            return obj.to_json()
-        # Let the base class default method raise the TypeError
-        return json.JSONEncoder.default( self , obj )
-
-class Model( JSONEncoder ) :
-    def to_json( self ) :
-        """
-        to_json transforms the Model instance into a JSON string
-        """
-        return jsonpickle.encode( self )
-
 
 
 
 @main.route('/Home', methods=['GET', 'POST'])
 @login_required
 def upload_file():
-    if request.method == 'POST' and 'file' in request.files:
-        li = []
-        for f in request.files.getlist('file'):
-            f.save(f.filename)
-            dframe = pd.read_csv(f.filename)
-            li.append(dframe)
-            
-    frame = pd.concat(li, axis=0, ignore_index=True)
-    ##uploaded_file = request.files['file']
-    ##if uploaded_file.filename != '':
-    ##    uploaded_file.save(uploaded_file.filename)
+    uploaded_file = request.files['file']
+    if uploaded_file.filename != '':
+        uploaded_file.save(uploaded_file.filename)
         ## read the csv_file
-    session["gst"] = ModelEncoder().encode(Model())
-  ##  data = pd.read_csv(uploaded_file.filename)
-  # # session["gst"] = data
-    df= frame[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross','Total Tax Amount']]
+    session["gst"] = uploaded_file.filename 
+    data = pd.read_csv(uploaded_file.filename)
+   # session["gst"] = data
+    df= data[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross','Total Tax Amount']]
     df['percent']= (df['Total Tax Amount']*100)/df['Tax Exclusive Gross']
     df['percent'] = df['percent'].round(0)
     df['percent']= df['percent'].fillna(0)
@@ -135,7 +111,7 @@ def upload_file():
     df = df.astype({"Transaction Type":'category'})
     df1= df[(df['Transaction Type'] != 'Refund') & (df['Transaction Type'] != 'Cancel')]
     Refund= df[(df['Transaction Type'] == 'Refund')]
-    Cancel= frame[['Order Id', 'Transaction Type', 'Ship To State', 'Total Tax Amount']]
+    Cancel= data[['Order Id', 'Transaction Type', 'Ship To State', 'Total Tax Amount']]
     Cancel = Cancel.astype({"Transaction Type":'category'})
     Cancel= Cancel[(Cancel['Transaction Type'] == 'Cancel')]
     dfb= Refund.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
@@ -144,7 +120,7 @@ def upload_file():
     dfa= df1.groupby(['Ship To State', 'percent']).agg({'Total Tax Amount': ['sum']})
     dfa= dfa.dropna
     print(dfb)
-    gstin= frame['Seller Gstin'].iloc[0] 
+    gstin= data['Seller Gstin'].iloc[0] 
     no_orders= df1['Transaction Type'].count()
     no_refunds= Refund['Transaction Type'].count()
     no_cancel= Cancel['Transaction Type'].count()
