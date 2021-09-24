@@ -155,7 +155,7 @@ def datae():
      df['percent']= df['percent'].astype(int)
      df['Total Tax Amount'] = df['Total Tax Amount'].astype('int64')
      df = df.astype({"Transaction Type":'category'})
-     df1= df[(df['Transaction Type'] != 'Refund') & (df['Transaction Type'] != 'Cancel')]
+     df1= df[(df['Transaction Type'] != 'Cancel')]
      Refund= df[(df['Transaction Type'] == 'Refund')]
      dfw = dfw.astype({"Transaction Type":'category'})
      Cancel= dfw[(dfw['Transaction Type'] == 'Cancel')]
