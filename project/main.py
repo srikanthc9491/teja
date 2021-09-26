@@ -145,7 +145,7 @@ def datae():
      dfw= dfd[['Transaction Type', 'Ship To State','Order Id']]
      sales= dfd[['Transaction Type', 'Ship To State','Order Id', 'Tax Exclusive Gross', 'Total Tax Amount']]
      sales= sales.astype({"Transaction Type":'category'})
-     sales= sales[(sales['Transaction Type'] != 'Cancel')]
+     sales= sales[(sales['Transaction Type'] != 'Refund')& (df['Transaction Type'] != 'Cancel') ]
      sale= sales[['Ship To State','Order Id', 'Tax Exclusive Gross', 'Total Tax Amount']]
      df= dfd[['Transaction Type', 'Ship To State', 'Tax Exclusive Gross', 'Total Tax Amount']]
      df['percent']= (df['Total Tax Amount']*100)/df['Tax Exclusive Gross']
