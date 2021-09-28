@@ -192,8 +192,7 @@ def datae():
      else:
        pass
      return render_template("data.html", tableb=[tab_html], titleb = ['na', 'Your B2B orders'], tables=[dfa_html, sale_html, Refund_html, Cancel_html], titles = ['na', 'you have to file GSTR 1 for these states', 'Your successful orders', 'Your Refunds', 'Your Cancelled Order Data'], gstin=gstin, no_orders=no_orders, totalTax=totalTax, no_refunds=no_refunds, no_cancel=no_cancel, add=add, totalSale=totalSale)
-
-session.pop('b2b',None)
+     session.pop('b2b',None)
 
 
 
