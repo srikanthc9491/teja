@@ -96,13 +96,13 @@ def welcome_page():
 @login_required
 def upload_file():
     b2bfile = request.files['ab']
-    if len(b2bfile.filename) >= 2 :
+      if len(b2bfile.filename) >= 2 :
         session["b2b"]=b2bfile.filename
         b2bfile.save(b2bfile.filename)
         Bdata = pd.read_csv(b2bfile.filename)
         
-     else:
-       pass
+      else:
+        pass
     uploaded_file = request.files['file']
     if uploaded_file.filename != '':
         uploaded_file.save(uploaded_file.filename)
