@@ -121,7 +121,7 @@
   <br>
 		
 
-		
+	<h2> 	Your B2C Orders		</h2> 
 	<div 
 	     class="card bg-warning text-white">
     		<div 
@@ -236,7 +236,74 @@ YOU CAN SEE YOUR REFUNDS BY AMAZON AUTOMATICALLY IN YOUR GSTR 2B SECTION. </div>
 </div>
 
   </div>
- <br>
+ 
+	<h2> 	Your B2B Orders		</h2> 
+	
+	
+	
+  
+  <div class="container">
+  <h2>Follow the steps to file your Amazon B2B GST Returns</h2>
+    <div class="card bg-warning">
+    <div class="card-body">
+<a href="http://www.gst.gov.in/" target="_blank">Click here to Log in to GSTR portal !</a> 
+</div>
+</div>
+</div>
+	
+	
+<div class="container">
+ <center>
+  <button type="button" class="btn btn-dark" data-toggle="collapse" data-target="#nemo">Click for Simple Steps</button>
+  <div id="nemo" class="collapse">
+   
+  <div class="card">
+    <div class="card-body">Log in to your GSTR portal and Go to Returns dashboard. Your GSTIN Number is:
+     {% print gstin %} </div>
+  </div>
+  <br>
+  <div class="card bg-primary text-white">
+    <div class="card-body">Select Month and Click GSTR-1 & go to Section-(4A,4B,6C,6B) "E-commerce (B2B)" </div>
+  </div>
+  <br>
+   <div class="card bg-info text-white">
+    <div class="card-body">Select the First State and Enter the below Tax Exclusive Sale Amount ,Invoice -No and Percent for it.  </div>
+  </div>
+
+  <br>
+    <div class="card bg-success text-white">
+    <div class="card-body">Click Save after entering details. </div>
+  </div>
+ 
+  <br>
+  
+  <br>
+  <div class="card bg-danger text-white">
+    <div class="card-body">***Click Submit data after enetering details of all the states in table and click on File Return. . .***
+  <br>Your GSTR 1 IS FILED! <br>
+YOU CAN SEE YOUR REFUNDS BY AMAZON AUTOMATICALLY IN YOUR GSTR 2B SECTION. </div>
+  </div>
+	  </div>
+</div>
+  <br>
+    <br>
+    <br>
+  
+  
+	{% for table in tableb %}
+
+<div class="container p-4 my-3 bg-info text-light">
+    <h2>{{titleb[loop.index]}}</h2>
+
+</div><br>
+    {{ table|safe }}
+  {% endfor %}
+</div>
+
+  </div>
+	
+	
+	<br>
 <br>
 
 <div id="GSTR-3" class="container p-3 my-3 text-dark text-capitalize">
