@@ -178,7 +178,7 @@ def datae():
      totalSale= df1.agg({'Tax Exclusive Gross': ['sum']})
      totalTax= df1.agg({'Total Tax Amount': ['sum']})
      
-     if not session.get("b2b") is None:   
+     if 'b2b' in session :   
        b2b= pd.read_csv(session.get('b2b'))
        b2b= b2b[['Seller Gstin', 'Invoice Number', 'Invoice Date', 'Transaction Type', 'Ship To State', 'Invoice Amount', 'Tax Exclusive Gross', 'Total Tax Amount']]
        b2b['percent']= b2b['Tax Exclusive Gross']/b2b['Total Tax Amount']
