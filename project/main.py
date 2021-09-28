@@ -101,7 +101,7 @@ def upload_file():
         b2bfile.save(b2bfile.filename)
         session["b2b"]=b2bfile.filename
         Bdata = pd.read_csv(b2bfile.filename)
-    return Bdata
+    Bdata
     if uploaded_file.filename != '':
         uploaded_file.save(uploaded_file.filename)
         ## read the csv_file
