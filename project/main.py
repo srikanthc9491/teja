@@ -179,13 +179,12 @@ def datae():
      totalTax= df1.agg({'Total Tax Amount': ['sum']})
      
      if 'b2b' in session :   
-       b2b= pd.read_csv(session.get('b2b'))
-       b2b= b2b[['Seller Gstin', 'Invoice Number', 'Invoice Date', 'Transaction Type', 'Ship To State', 'Invoice Amount', 'Tax Exclusive Gross', 'Total Tax Amount']]
-       b2b['percent']= b2b['Tax Exclusive Gross']/b2b['Total Tax Amount']
+       bbb= pd.read_csv(session.get('b2b'))
+       b2b= bbb[['Customer Bill To Gstid', 'Invoice Number', 'Invoice Date', 'Transaction Type', 'Ship To State', 'Invoice Amount', 'Tax Exclusive Gross', 'Total Tax Amount']]
        b2b= b2b.astype({"Transaction Type":'category'})
        b2b= b2b[(b2b['Transaction Type'] != 'Refund') & (b2b['Transaction Type'] != 'Cancel')]
-       b2b['percent']=b2b['percent'].round(2)
-       tab= b2b[['Invoice Number', 'Invoice Date','Ship To State', 'Invoice Amount', 'Tax Exclusive Gross', 'Total Tax Amount','percent']]
+       b2b['percent']= bbb['Cgst Rate']+bbb['Sgst Rate']+bbb['Utgst Rate']+bbb['Igst Rate']
+       tab= b2b[['Invoice Number', 'Customer Bill To Gstid', 'Invoice Date','Ship To State', 'Invoice Amount', 'Tax Exclusive Gross', 'Total Tax Amount','percent']]
        tab.set_index('Invoice Number', inplace=True)
        tab_html= tab.to_html()
        return render_template("data.html", tableb=[tab_html], titleb = ['na', 'Your B2B orders'], tables=[dfa_html, sale_html, Refund_html, Cancel_html], titles = ['na', 'you have to file GSTR 1 for these states', 'Your successful orders', 'Your Refunds', 'Your Cancelled Order Data'], gstin=gstin, no_orders=no_orders, totalTax=totalTax, no_refunds=no_refunds, no_cancel=no_cancel, add=add, totalSale=totalSale)
