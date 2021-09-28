@@ -188,11 +188,12 @@ def datae():
        tab= b2b[['Invoice Number', 'Invoice Date','Ship To State', 'Invoice Amount', 'Tax Exclusive Gross', 'Total Tax Amount','percent']]
        tab.set_index('Invoice Number', inplace=True)
        tab_html= tab.to_html()
-       session.pop('b2b',None)
+       
      else:
        pass
      return render_template("data.html", tableb=[tab_html], titleb = ['na', 'Your B2B orders'], tables=[dfa_html, sale_html, Refund_html, Cancel_html], titles = ['na', 'you have to file GSTR 1 for these states', 'Your successful orders', 'Your Refunds', 'Your Cancelled Order Data'], gstin=gstin, no_orders=no_orders, totalTax=totalTax, no_refunds=no_refunds, no_cancel=no_cancel, add=add, totalSale=totalSale)
 
+session.pop('b2b',None)
 
 
 
