@@ -282,8 +282,11 @@ YOU CAN SEE YOUR REFUNDS BY AMAZON AUTOMATICALLY IN YOUR GSTR 2B SECTION. </div>
   
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <div class=page>
-<h2> {% print gstin %} </h2>
+<h2> Your GSTIN :  {% print gstin %} </h2>
 <div id="divi" class="container p-4 my-3 bg-light text-info">
+	<p class="h4"><a href="https://return.gst.gov.in/returns/auth/gstr1">Click here for GSTR 1 Filing</a></p>
+
+	
 
 {% for table in tables %}
 
